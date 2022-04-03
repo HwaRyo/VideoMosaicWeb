@@ -42,7 +42,7 @@ export default {
             console.log('axios get success', data);
             this.user.imageUrl = data.imageUrl;
             this.user.name = data.name;
-            this.user.email = data.email;
+            this.user.email = data.userEmail;
         }).catch((err) =>{
             console.log('err',err);
         })
