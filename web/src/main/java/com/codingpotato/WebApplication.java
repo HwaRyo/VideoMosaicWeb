@@ -1,4 +1,4 @@
-package com.codingpotato.web;
+package com.codingpotato;
 
 import com.codingpotato.config.AppProperties;
 import org.springframework.boot.SpringApplication;
@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 public class WebApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(WebApplication.class, args);
 	}
-
 }

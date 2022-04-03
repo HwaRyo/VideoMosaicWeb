@@ -24,4 +24,3 @@ public class AuthResponse {
         this.tokenType = tokenType;
     }
 }
-
