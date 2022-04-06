@@ -6,7 +6,7 @@ def echo_handler(conn, addr, terminator="bye"):
     BUF_SIZE = 1024
     while True:
         data = conn.recv(BUF_SIZE)
-        msg = data.decode()
+        msg = data.decode('utf-8')
         print('RECEIVED: {} << {}'.format(msg, addr))
         conn.sendall(data)
         if msg == terminator:
