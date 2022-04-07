@@ -66,7 +66,6 @@ while vc.isOpened():
 
 	# loop over the detections
 	for i in range(0, detections.shape[2]):
-
 		# filter out weak detections by ensuring the predicted
 		# probability is greater than a minimum threshold
 		if detections[0, 0, i, 2] > args["confidence"]:
@@ -77,8 +76,9 @@ while vc.isOpened():
 			rects.append(box.astype("int"))
 
 			(startX, startY, endX, endY) = box.astype("int")
-			cv2.rectangle(frame, (startX, startY), (endX, endY),
-				(0, 255, 0), 2)
+			print(startX, startY, endX, endY)
+			# cv2.rectangle(frame, (startX, startY), (endX, endY),
+			# 	(0, 255, 0), 2)
 
 	objects = ct.update(rects) 
 	for (objectID, centroid) in objects.items():
