@@ -20,7 +20,12 @@ const routes = [
         path: '/profile',
         name: 'Profile',
         component: () => import('@/components/Profile')
-    }
+    },
+    {
+        path: '/download',
+        name: 'VideoDownload',
+        component: () => import('@/views/VideoDownload')
+    },
 ];
 
 export const router = createRouter({

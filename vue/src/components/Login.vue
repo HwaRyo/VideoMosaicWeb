@@ -1,6 +1,6 @@
 <template>
 <div class="wrap">
-    <div v-if="!isLogin" class="google-btn" @click="sendGoogleUrl">
+    <div v-if="!this.$store.getters['token/getIsLogin']" class="google-btn" @click="sendGoogleUrl">
         <div class="google-icon-wrapper">
             <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
         </div>
@@ -25,6 +25,7 @@ export default {
         handleLogout(){
             localStorage.removeItem("token");
             this.$store.dispatch('token/setToken', false);
+            this.$store.dispatch('token/setIsLogin', false);
             this.$router.push("/");
         }
     },

@@ -1,18 +1,24 @@
 package com.codingpotato.controller;
 
-import com.codingpotato.config.AppProperties;
 import com.codingpotato.exception.ResourceNotFoundException;
 import com.codingpotato.model.User;
 import com.codingpotato.repository.UserRepository;
 import com.codingpotato.security.CurrentUser;
 import com.codingpotato.security.TokenProvider;
 import com.codingpotato.security.UserPrincipal;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,5 +48,20 @@ public class UserController {
         map.put("userEmail",tokenProvider.getUserEmailFromToken(temp));
 
         return map;
+    }
+
+    @GetMapping("/download")
+    public void download(HttpServletResponse response) throws IOException {
+        String path = "D:\\Git\\VideoMosaicWeb\\web\\src\\main\\resources\\3-1.png";
+
+        byte[] fileByte = FileUtils.readFileToByteArray(new File(path));
+
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode("3-1.png", "UTF-8")+"\";");
+        response.setHeader("Content-Transfer-Encoding", "binary");
+
+        response.getOutputStream().write(fileByte);
+        response.getOutputStream().flush();
+        response.getOutputStream().close();
     }
 }

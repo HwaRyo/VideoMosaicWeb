@@ -24,7 +24,7 @@ export default {
         }
     },
     created(){
-        const Token = this.$store.getters['token/getToken'];
+        const Token = localStorage.getItem('token');
         console.log('token',Token);
         const headers = {
             'Content-Type': 'application/json',

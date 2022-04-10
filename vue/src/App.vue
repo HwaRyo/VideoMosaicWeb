@@ -1,38 +1,38 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <login></login> 
+  <login></login>    
   <router-view></router-view>
 </template>
 
 <script>
 import Login from './components/Login.vue'
-// import { onMounted } from '@vue/runtime-core'
-// import {computed} from 'vue';
-// import {useStore} from 'vuex';
+import { onMounted } from '@vue/runtime-core'
+import {computed} from 'vue';
+import {useStore} from 'vuex';
 
 export default {
   name: 'App',
   components: {
-    Login,
+    Login
   },
 
-  // setup(){
-  //   const store = useStore();
+  setup(){
+    const store = useStore();
     
-  //   var isLogin = computed(() => store.getters['token/getIsLogin']);
+    var isLogin = computed(() => store.getters['token/getIsLogin']);
     
-  //   onMounted(() => {
-  //     if(localStorage.getItem("token")){
-  //       store.dispatch('token/setIsLogin', true);
-  //     }else{
-  //       store.dispatch('token/setIsLogin', false);
-  //     }
-  //   })
+    onMounted(() => {
+      if(localStorage.getItem("token")){
+        store.dispatch('token/setIsLogin', true);
+      }else{
+        store.dispatch('token/setIsLogin', false);
+      }
+    })
 
-  //   return{
-  //     isLogin
-  //   }
-  // }
+    return{
+      isLogin
+    }
+  }
 }
 </script>
   
