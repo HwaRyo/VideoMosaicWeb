@@ -5,7 +5,7 @@ import os
 class sample_gathering:
     def __init__(self, face_dir, name, id):
         self.face_dir = face_dir
-        self.target_cnt = 200
+        self.target_cnt = 10
         self.cnt = 0
         self.face_classifier = cv2.CascadeClassifier('opencv/data/haarcascades/haarcascade_frontalface_default.xml')
         self.name = name
@@ -13,6 +13,12 @@ class sample_gathering:
 
     def video_capture(self):
         cap = cv2.VideoCapture(self.face_dir)  # Video Capture object create
+        # total frame get & target count image setting
+        video_length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        if video_length >= 300:
+            self.target_cnt = 300
+        else:
+            self.target_cnt = video_length
         # fps calculate
         fps = cap.get(cv2.CAP_PROP_FPS)
         delay = int(1000 / fps)
