@@ -3,9 +3,8 @@ import os
 
 
 class sample_gathering:
-
-    def __init__(self, dataset_dir, name, id):
-        self.base_dir = dataset_dir
+    def __init__(self, face_dir, name, id):
+        self.face_dir = face_dir
         self.target_cnt = 200
         self.cnt = 0
         self.face_classifier = cv2.CascadeClassifier('opencv/data/haarcascades/haarcascade_frontalface_default.xml')
@@ -13,10 +12,14 @@ class sample_gathering:
         self.id = id
 
     def video_capture(self):
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(self.face_dir)  # Video Capture object create
+        # fps calculate
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        delay = int(1000 / fps)
         while True:
             ret, frame = cap.read()
             if ret:
+                cv2.waitKey(delay)  # 지연시간 설정
                 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
                 # face detection
                 faces = self.face_classifier.detectMultiScale(
@@ -45,6 +48,9 @@ class sample_gathering:
                 cv2.imshow('face record', frame)
                 if cv2.waitKey(1) == 27 or self.cnt == self.target_cnt:
                     break
+            else:
+                print("Can't find video")
+                break
         cap.release()
         cv2.destroyAllWindows()
         print("Collecting Samples Completed")
