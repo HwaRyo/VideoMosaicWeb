@@ -11,7 +11,6 @@
     </div>
 </template>
 <script>
-import axios from "axios";
 export default {
     name: 'Profile',
     data: () => {
@@ -33,7 +32,7 @@ export default {
         const url = 'http://localhost:8080/profile';
         console.log('url',url);
 
-        axios({
+        this.$axios({
             method: 'get',
             url: url,
             headers: headers

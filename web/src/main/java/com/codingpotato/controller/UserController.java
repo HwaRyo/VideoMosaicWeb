@@ -52,12 +52,12 @@ public class UserController {
 
     @GetMapping("/download")
     public void download(HttpServletResponse response) throws IOException {
-        String path = "D:\\Git\\VideoMosaicWeb\\web\\src\\main\\resources\\3-1.png";
+        String path = "D:\\Git\\VideoMosaicWeb\\web\\src\\main\\resources\\slice_test2.mp4";
 
         byte[] fileByte = FileUtils.readFileToByteArray(new File(path));
 
         response.setContentType("application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode("3-1.png", "UTF-8")+"\";");
+        response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode("slice_test2.mp4", "UTF-8")+"\";");
         response.setHeader("Content-Transfer-Encoding", "binary");
 
         response.getOutputStream().write(fileByte);
