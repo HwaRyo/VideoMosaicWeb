@@ -32,7 +32,7 @@ export default {
         const url = 'http://localhost:8080/profile';
         console.log('url',url);
 
-        this.$axios({
+        this.axios({
             method: 'get',
             url: url,
             headers: headers
