@@ -6,7 +6,7 @@ import struct
 ip = '192.168.0.149'
 port = 50001
 
-capture = cv2.VideoCapture("D:\\School\\FinalProject\\VideoMosaicWeb\\Connect\\Data\\Test1.mp4")
+capture = cv2.VideoCapture("D:\\School\\FinalProject\\VideoMosaicWeb\\Connect\\Data\\slice_test2.mp4")
 
 
 capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
