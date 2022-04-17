@@ -2,6 +2,8 @@ import socket
 import struct
 import pickle
 import cv2
+from time import time
+from time import gmtime
 
 ip = socket.gethostbyname(socket.gethostname())
 port = 50001
@@ -19,6 +21,8 @@ data_buffer = b""
 
 data_size = struct.calcsize("L")
 
+(time())
+
 while True:
     while len(data_buffer) < data_size:
         data_buffer += client_socket.recv(4096)
@@ -33,18 +37,18 @@ while True:
     frame_data = data_buffer[:frame_size]
     data_buffer = data_buffer[frame_size:]
     
-    print("Frame size - {} bytes".format(frame_size))
+    # print("Frame size - {} bytes".format(frame_size))
     
     frame = pickle.loads(frame_data)
     frame = cv2.imdecode(frame, cv2.IMREAD_COLOR)
     
-    print(frame[:10])
-    cv2.imshow('Frame', frame)
+    # cv2.imshow('Frame', frame)
     
     key = cv2.waitKey(1) & 0xFF
     if key == ord("q"):
         break
 
+print(gmtime(time()))
 client_socket.close()
 server_socket.close()
 print('close...')
