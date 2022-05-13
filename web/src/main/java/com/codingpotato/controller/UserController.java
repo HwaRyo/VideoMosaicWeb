@@ -6,6 +6,8 @@ import com.codingpotato.repository.UserRepository;
 import com.codingpotato.security.CurrentUser;
 import com.codingpotato.security.TokenProvider;
 import com.codingpotato.security.UserPrincipal;
+import com.codingpotato.service.WebService;
+import com.codingpotato.service.WebServiceImpl;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.env.ConfigTreePropertySource;
@@ -32,25 +34,12 @@ public class UserController {
     private UserRepository userRepository;
 
     @Autowired
-    private TokenProvider tokenProvider;
-
-    @GetMapping("/user/me")
-    @PreAuthorize("hasRole('USER')")
-    public User getCurrentUser(@CurrentUser UserPrincipal userPrincipal) {
-        return userRepository.findById(userPrincipal.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userPrincipal.getId()));
-    }
+    private WebServiceImpl webService;
 
     @GetMapping("/profile")
     public Map<String, String> requestSomething(@RequestHeader Map<String, Object> requestHeader) {
-        System.out.println(requestHeader);
-
-        String temp = requestHeader.get("authorization").toString().replace("Bearer ", "");
-
-        HashMap<String, String> map = new HashMap<>();
-        map.put("userEmail", tokenProvider.getUserEmailFromToken(temp));
-
-        return map;
+        String reqToken = requestHeader.get("authorization").toString().replace("Bearer ", "");
+        return webService.getProfile(reqToken);
     }
 
     @GetMapping("/download")

@@ -1,6 +1,7 @@
 import socket
 from threading import Thread
 
+print("python socket")
 def echo_handler(conn, addr):
     BUF_SIZE = 1024
     count = conn.recv(BUF_SIZE)
@@ -23,8 +24,8 @@ def run_server(host = '192.168.0.18', port = 50001):
             sock.listen(3)
             conn, addr = sock.accept()
             echo_handler(conn, addr)
-            # t = Thread(target=echo_handler, args=(conn, addr))
-            # t.start()
+            t = Thread(target=echo_handler, args=(conn, addr))
+            t.start()
         
 
 if __name__ == '__main__':
