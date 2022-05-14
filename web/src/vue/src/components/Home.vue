@@ -5,6 +5,7 @@
       <h1 class="hero">영상 얼굴 인식 모자이크 웹</h1>
       <h2 class="hero">체험해보세요!</h2>
       <div class="call"><span><a href="/fileupload" class = "fw">파일 업로드</a></span></div>
+      <br>
       <div class="call"><span><a href="/filedownload" class = "fw">파일 다운로드</a></span></div>
     </div>
     

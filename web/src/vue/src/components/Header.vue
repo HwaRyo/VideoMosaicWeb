@@ -2,8 +2,7 @@
 	<div class="hold">
   <div class="header">
     <div class="container">
-      <div id="logo">
-      </div>
+        <a href="/" class = "al">MOSAIC WEB</a>
       <ul class="nav">
         <li><a href="/login">로그인</a></li>
         <li><a href="/Announcement">공지사항</a></li>

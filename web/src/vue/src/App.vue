@@ -36,7 +36,14 @@ export default {
 </script>
 
 <style>
-html,
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #444;
+  font-size: 24px;
+  font-weight: 350;
+  font-family: 'Roboto Slab', sans-serif;
+}
 body {
   margin: 0;
   padding: 0;
@@ -100,18 +107,18 @@ body {
 }
 
 .header.small > .container > #logo {
-  height: 40px;
+  height: 30px;
 }
 
-#logo {
+.logo {
   position: absolute;
-  top: 50%;
+  top: 30%;
+  text-decoration: none;
   transform: translateY(-50%);
-  background: rgb(153, 169, 238);
   float: left;
   height: 40px;
   width: 170px;
-  margin-left: 5px;
+  margin-left: 20px;
 }
 
 ul.nav {
@@ -412,6 +419,7 @@ h2 {
     display: block;
     transform: none;
     margin: 10px auto 0 auto;
+    text-decoration: none;
   }
   ul.nav {
     float: none;
@@ -467,6 +475,7 @@ h2 {
     display: none;
   }
 }
+
 
 
 </style>
