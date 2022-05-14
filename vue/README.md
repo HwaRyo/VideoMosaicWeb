@@ -1,4 +1,8 @@
+<<<<<<< HEAD:vue/README.md
 # vue-client
+=======
+# finalweb
+>>>>>>> JS:web/src/vue/README.md
 
 ## Project setup
 ```
@@ -13,11 +17,14 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
+<<<<<<< HEAD:vue/README.md
 ```
 
 ### Lints and fixes files
 ```
 npm run lint
+=======
+>>>>>>> JS:web/src/vue/README.md
 ```
 
 ### Customize configuration
