@@ -76,7 +76,7 @@ while vc.isOpened():
 			rects.append(box.astype("int"))
 
 			(startX, startY, endX, endY) = box.astype("int")
-			print(startX, startY, endX, endY)
+			# print(startX, startY, endX, endY)
 			# cv2.rectangle(frame, (startX, startY), (endX, endY),
 			# 	(0, 255, 0), 2)
 
