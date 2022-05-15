@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "t_jpa_board")
 @NoArgsConstructor
 @Data
-public class BoardEntity {
+public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,7 +46,7 @@ public class BoardEntity {
 
     private LocalDateTime updatedDatetime;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "board_id")
-    private Collection<BoardFileEntity> fileList;
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "board_id")
+////    private Collection<BoardFileEntity> fileList;
 }

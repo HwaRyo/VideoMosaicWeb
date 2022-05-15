@@ -16,12 +16,6 @@
         </div>
         <p class="btn-text"><b>Sign in with google</b></p>
     </div>
-    <div v-else class="google-btn-login" @click="handleLogout">
-        <div class="google-icon-wrapper">
-            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-        </div>
-        <p class="btn-text-login"><b>Sign out</b></p>
-    </div>
 </div>
 </div>
 </template>
@@ -33,18 +27,6 @@
     export default {
         name: 'Login',
         methods: {
-            handleLogout() {
-                localStorage.removeItem("token");
-                this
-                    .$store
-                    .dispatch('token/setToken', false);
-                this
-                    .$store
-                    .dispatch('token/setIsLogin', false);
-                this
-                    .$router
-                    .push("/");
-            }
         },
         setup() {
             const store = useStore();
