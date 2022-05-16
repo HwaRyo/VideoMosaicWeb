@@ -8,10 +8,12 @@ spring:
         show-sql: true
         hibernate:
             ddl-auto: update
-            naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+            naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
     security:
       oauth2:
         client:
@@ -38,3 +40,5 @@ app:
       - http://localhost:8081/oauth2/redirect
       - myandroidapp://oauth2/redirect
       - myiosapp://oauth2/redirect
+
+

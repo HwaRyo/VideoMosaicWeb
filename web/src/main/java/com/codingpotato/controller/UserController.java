@@ -1,6 +1,8 @@
 package com.codingpotato.controller;
 
+import com.codingpotato.DTO.BoardDTO;
 import com.codingpotato.exception.ResourceNotFoundException;
+import com.codingpotato.model.Board;
 import com.codingpotato.model.User;
 import com.codingpotato.repository.UserRepository;
 import com.codingpotato.security.CurrentUser;
@@ -8,15 +10,18 @@ import com.codingpotato.security.TokenProvider;
 import com.codingpotato.security.UserPrincipal;
 import com.codingpotato.service.WebService;
 import com.codingpotato.service.WebServiceImpl;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.env.ConfigTreePropertySource;
+import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.*;
 import java.net.Socket;
@@ -25,6 +30,7 @@ import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,6 +41,17 @@ public class UserController {
 
     @Autowired
     private WebServiceImpl webService;
+
+
+    @PostMapping("/insert")
+    public void insertBoard(@RequestBody BoardDTO boardDTO) throws Exception {
+        webService.insertBoard(boardDTO);
+    }
+
+    @GetMapping("/indexboard")
+    public List<Board> insertBoard() throws Exception {
+        return webService.indexBoard();
+    }
 
     @GetMapping("/profile")
     public Map<String, String> requestSomething(@RequestHeader Map<String, Object> requestHeader) {
