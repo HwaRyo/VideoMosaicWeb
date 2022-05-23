@@ -8,7 +8,7 @@
           <div v-else class="headerItem" @click="handleLogout">
               <p class=""><b>로그아웃</b></p>
           </div>
-        <a href="/Announcement" class="headerItem">공지사항</a>
+        <a href="/announcement" class="headerItem">공지사항</a>
   </div>
 </div>
 </template>

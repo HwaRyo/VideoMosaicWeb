@@ -61,6 +61,13 @@
         name: 'Home',
         methods: {
             moveUpload(){
+                location.href = "/fileupload";
+            },
+            moveDownload(){
+                location.href = "/videodownload";
+            }
+
+            /*moveUpload(){
                 if(!this.$store.getters['token/getIsLogin']){
                     alert("로그인을 진행해주세요!");
                 }else{
@@ -72,10 +79,11 @@
                     alert("로그인을 진행해주세요!");
                 }else{
                     location.href = "/filedownload"; 
-                }             
-            }
+                }*/      
+            
         }
     }
 </script>
 
-    <style></style>
+    <style>
+    </style>

@@ -3,40 +3,40 @@ import {createWebHistory, createRouter} from 'vue-router';
 const routes = [
     {
         path: '/login',
-        name: 'Login',
-        component: () => import ('@/components/Login')
+        name: 'login',
+        component: () => import ('@/components/login')
     }, {
         path: '/oauth2/redirect',
-        name: 'OauthHandler',
-        component: () => import ('@/components/OauthHandler')
+        name: 'oauthHandler',
+        component: () => import ('@/components/oauthHandler')
     }, {
         path: '/profile',
-        name: 'Profile',
-        component: () => import ('@/components/Profile')
+        name: 'profile',
+        component: () => import ('@/components/profile')
     }, {
         path: '/download',
-        name: 'VideoDownload',
-        component: () => import ('@/views/VideoDownload')
+        name: 'videoDownload',
+        component: () => import ('@/components/videoDownload')
     }, {
         path: '/',
-        name: 'Home',
-        component: () => import ('@/components/Home')
+        name: 'home',
+        component: () => import ('@/components/home')
     }, {
         path: '/about',
-        name: 'About',
-        component: () => import ('@/components/About')
+        name: 'about',
+        component: () => import ('@/components/about')
     }, {
         path: '/fileupload',
-        name: 'FileUpload',
-        component: () => import ('@/components/FileUpload')
+        name: 'fileUpload',
+        component: () => import ('@/components/fileUpload')
     }, {
         path: '/filedownload',
-        name: 'FileDownload',
-        component: () => import ('@/components/FileDownload')
+        name: 'fileDownload',
+        component: () => import ('@/components/fileDownload')
     }, {
         path: '/announcement',
-        name: 'Announcement',
-        component: () => import ('@/components/Announcement')
+        name: 'announcement',
+        component: () => import ('@/components/announcement')
     }
 ];
 

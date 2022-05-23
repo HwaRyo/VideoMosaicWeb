@@ -7,10 +7,9 @@
 </template>
 
 <script>
-import Header from '@/components/Header'; //import 헤더 추가
-import Footer from '@/components/Footer'; //import 풋터 추가
-import Home from '@/components/Home';
-import Login from '@/components/Login.vue'
+import Header from '@/components/header'; //import 헤더 추가
+import Footer from '@/components/footer'; //import 풋터 추가
+
 import { onMounted } from '@vue/runtime-core'
 import {computed} from 'vue';
 import {useStore} from 'vuex';
@@ -28,11 +27,9 @@ window.onscroll = function() {
 };
 
 export default {
-  name: 'nav',
+  name: 'app',
   components: {
     Header          //헤더 컴포넌트 추가
-    , Login
-    , Home
     ,Footer         //풋터 컴포넌트 추가
     
   },
@@ -452,7 +449,7 @@ h2 {
     margin: 0 auto;
   }
   ul.nav li {
-    float: initial;
+   
     display: inline-block;
   }
   .responsivegroup {
