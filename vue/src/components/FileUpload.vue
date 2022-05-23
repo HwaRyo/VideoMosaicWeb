@@ -1,5 +1,38 @@
 <template>
   <div class="dan-up-vid">
+    <div class="dan-video">
+    <input
+      class="dan-up-vid-input"
+      type="file"
+      @change="onChangevid"
+      accept="video/mp4,video/mkv,"
+    />
+    <div v-show="files.length === 0" class="dan-up-vid-body">
+      <div class="dan-up-vid-image">
+        <img width="200" height="200" src="../assets/video.png" />
+      </div>
+      <p class="dan-up-vid-sub-text">영상을 여기에 끌어다 놓으세요!</p>
+    </div>
+    <div v-show="files.length > 0" class="dan-up-vid-back-body">
+      <div
+        class="dan-up-vid-file-name"
+        :key="index"
+        v-for="(fil, index) in files"
+      >
+        <img width="30" :src="fil.img" />
+        {{ limitStr(fil.file.name, 15) }}
+        <button
+          class="dan-up-vid-button"
+          :id="fil.id"
+          @click="eliminatevid(fil.id)"
+        >
+          x
+        </button>
+      </div>
+    </div>
+    </div>
+
+    <div class="dan-facevideo">
     <input
       class="dan-up-vid-input"
       type="file"
@@ -30,7 +63,11 @@
         </button>
       </div>
     </div>
+    </div>
   </div>
+
+
+
 
 <div class="section bg">
     <div class="container">
@@ -132,10 +169,10 @@ export default {
 </script>
 
 <style>
-.dan-up-vid {
-  border-radius: 15px;
+.dan-facevideo {
+ border-radius: 15px;
   border: 3px dashed lightblue;
-  
+  width: 500px;
   height: 250px;
   display: flex;
   flex-direction: column;
@@ -146,7 +183,33 @@ export default {
   position: relative;
   background: rgb(173, 216, 230, 0.2);
 }
-.dan-up-vid:hover {
+
+
+.dan-video {
+ border-radius: 15px;
+  border: 3px dashed lightblue;
+  width: 750px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.8s;
+  cursor: pointer;
+  position: relative;
+  background: rgb(173, 216, 230, 0.2);
+}
+.dan-up-vid {
+  display: flex;
+}
+.dan-up-vid-body{
+  align-items: center;
+}
+.dan-facevideo:hover {
+  transition: background 0.1s;
+  background: rgb(173, 216, 230, 0.5);
+}
+.dan-video:hover {
   transition: background 0.1s;
   background: rgb(173, 216, 230, 0.5);
 }
@@ -160,10 +223,6 @@ export default {
   opacity: 0;
   -moz-opacity: 0;
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
-}
-.dan-up-vid-body {
-}
-.dan-up-vid-image {
 }
 .dan-up-vid-button {
   position: absolute;
@@ -183,8 +242,7 @@ export default {
 .dan-up-vid-file-name {
   margin: 5px;
 }
-.dan-up-vid-sub-text {
-}
+
 .dan-up-vid-back-body {
   display: flex;
   flex-direction: column;

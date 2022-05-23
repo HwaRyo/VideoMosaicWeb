@@ -112,7 +112,7 @@ body {
 }
 
 .header {
-  line-height: 80px;
+  line-height: 77px;
   width: 100%;
   transition: line-height 0.2s linear, box-shadow 0.2s linear;
   position: fixed;
