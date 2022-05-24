@@ -38,7 +38,8 @@ class module_face_recognition:
                 cv2.waitKey(delay)
                 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
                 # face detecting
-                faces = self.face_classifier.detectMultiScale(gray, 1.3, 5)
+                faces = self.face_classifier.detectMultiScale(gray, 1.3, 5) # detection
+
                 for (x, y, w, h) in faces:
                     # draw face area
                     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 255), 2)
