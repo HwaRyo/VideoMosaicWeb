@@ -54,7 +54,7 @@ class pythonModel:
 			objects = centroidTracker.update(rects) 
 			for (objectID, centroid) in objects.items():
 				text = "ID {}".format(objectID)
-				# face recognition code add
+				# face recognition code add #######################################################
 				
 				# cv2.putText(frame, text, (centroid[0] - 10, centroid[1] - 10),
 					# cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)

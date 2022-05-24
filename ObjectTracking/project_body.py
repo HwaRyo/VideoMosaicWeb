@@ -50,7 +50,7 @@ def serverStart(connect, address):
     mailSend = mailSend(userEmail)
     title = "[코딩하는 감자들]"
     content = "모자이크 처리가 완료되었습니다.\n \
-                이용해 주셔서 감사합니다.\n \
+                이용해 주셔서 감사합니다.\n\n \
                 - 코딩하는 감자들 - \
                 "
     mailSend.send(title = title, content = content)
