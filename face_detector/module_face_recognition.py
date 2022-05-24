@@ -4,7 +4,7 @@ import os, glob
 
 class module_face_recognition:
 
-    def __init__(self, model_dir,video_dir):  # base_idr -> 모델이 저장되어 있는 디렉토리
+    def __init__(self, model_dir,video_dir):  # model_dir -> 모델이 저장되어 있는 디렉토리
         self.video_dir = video_dir
         self.model_dir = model_dir
         self.min_accuracy = 80  # threshold
