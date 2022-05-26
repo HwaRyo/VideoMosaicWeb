@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Header from '@/components/header'; //import 헤더 추가
-import Footer from '@/components/footer'; //import 풋터 추가
+import Header from '@/components/Header'; //import 헤더 추가
+import Footer from '@/components/Footer'; //import 풋터 추가
 
 import { onMounted } from '@vue/runtime-core'
 import {computed} from 'vue';
