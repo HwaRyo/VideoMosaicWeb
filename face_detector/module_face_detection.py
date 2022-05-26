@@ -5,7 +5,7 @@ import os, glob
 
 class module_face_detection:
 
-    def __init__(self,dataset_dir):
+    def __init__(self, dataset_dir):
         self.train_data, self.train_labels = [], []
         self.dirs = [d for d in glob.glob(dataset_dir+'/*') if os.path.isdir(d)]
 

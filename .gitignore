@@ -30,3 +30,6 @@ ObjectTracking/model/res10_300x300_ssd_iter_140000.caffemodel
 ObjectTracking/model/haarcascade_frontface.xml
 ObjectTracking/model/deploy.prototxt.txt
 ObjectTracking/model/custom/custom.xml
+ObjectTracking/pw.txt
+ObjectTracking/videoData/slice_test2_1.mp4
+mosaic/user/
