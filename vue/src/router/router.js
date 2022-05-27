@@ -4,39 +4,39 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import ('@/components/login')
+        component: () => import ('@/views/Login')
     }, {
         path: '/oauth2/redirect',
         name: 'oauthHandler',
-        component: () => import ('@/components/oauthHandler')
+        component: () => import ('@/views/OauthHandler')
     }, {
         path: '/profile',
         name: 'profile',
-        component: () => import ('@/components/profile')
+        component: () => import ('@/views/Profile')
     }, {
         path: '/download',
         name: 'videoDownload',
-        component: () => import ('@/components/videoDownload')
+        component: () => import ('@/views/VideoDownload')
     }, {
         path: '/',
         name: 'home',
-        component: () => import ('@/components/home')
+        component: () => import ('@/views/Home')
     }, {
         path: '/about',
         name: 'about',
-        component: () => import ('@/components/about')
+        component: () => import ('@/views/About')
     }, {
         path: '/fileupload',
         name: 'fileUpload',
-        component: () => import ('@/components/fileUpload')
+        component: () => import ('@/views/FileUpload')
     }, {
         path: '/filedownload',
         name: 'fileDownload',
-        component: () => import ('@/components/fileDownload')
+        component: () => import ('@/views/FileDownload')
     }, {
         path: '/announcement',
         name: 'announcement',
-        component: () => import ('@/components/announcement')
+        component: () => import ('@/views/Announcement')
     }
 ];
 
