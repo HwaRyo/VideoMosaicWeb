@@ -17,7 +17,7 @@
             <div class="col two bg margin extrapad">
                 <h1 class="icon side">1</h1>
                 <span class="feature side">메인 동영상 준비</span>
-                <p class="side">본인 이외의 사람 얼굴을 자동으로 모자이크 할 영상파일을 준비하세요.</p>
+                <p class="side">얼굴을 자동으로 모자이크 할 영상파일을 준비하세요.</p>
             </div>
             <div class="col two bg margin extrapad">
                 <h1 class="icon side">2</h1>
@@ -43,13 +43,13 @@
         <div class="container">
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+                <h1 class="service">손으로 언제다 모자이크 할거야?</h1>
+                <p>편집을 해본 사람만 아는 노가다 모자이크 작업은 이제 그만</p>
             </div>
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+                <h1 class="service">초상권 침해 언제까지 할거야?</h1>
+                <p>공개적인 영상이라면 더욱 모자이크 처리를 잘 하자</p>
             </div>
             <div class="group"></div>
         </div>
@@ -72,14 +72,14 @@
                 if(!this.$store.getters['token/getIsLogin']){
                     alert("로그인을 진행해주세요!");
                 }else{
-                    location.href = "/fileupload"; 
+                    location.href = "/FileUpload"; 
                 }             
             },
             moveDownload(){
                 if(!this.$store.getters['token/getIsLogin']){
                     alert("로그인을 진행해주세요!");
                 }else{
-                    location.href = "/filedownload"; 
+                    location.href = "/FileDownload"; 
                 }
             }
             
@@ -262,7 +262,7 @@ h1.hero:after {
 .col .service,
 .col .feature {
   font-size: 21px;
-  font-weight: 300;
+  font-weight: 700;
   font-family: 'Roboto Slab', sans-serif;
 }
 
@@ -326,7 +326,7 @@ h1.hero:after {
 
 .col p,
 .col h1 {
-  padding: 0 1%;
+  padding: 0 0%;
   text-align: center;
 }
 

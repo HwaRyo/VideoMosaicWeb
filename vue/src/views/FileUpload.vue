@@ -5,6 +5,7 @@
     <input
       class="dan-up-vid-input"
       type="file"
+      name="dan-up-vid-input"
       @change="onChangevid"
       accept="video/mp4,video/mkv,"
     />
@@ -32,11 +33,12 @@
       </div>
     </div>
     </div>
-
+<!--얼굴 업로드 동영상 첨부 존-->
     <div class="dan-facevideo">
     <input
       class="dan-up-vid-input"
       type="file"
+      name="dan-up-vid-inputt"
       @change="onChangevid"
       accept="video/mp4,video/mkv,"
     />
@@ -69,39 +71,32 @@
 </div>
 
 <div class="section bg">
-    <div class="container">
-        <h1>사용방법</h1>
-        <div class="col two bg margin extrapad">
-        <h1 class="icon side">1</h1>
-        <span class="feature side">설명</span>
-                        <span class="side">
-                            - 설명설명</span>
-                        <p class="side">설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
-                    </div>
-                    <div class="col two bg margin extrapad">
-                        <h1 class="icon side">2</h1>
-                        <span class="feature side">설명</span>
-                        <span class="side">
-                            - 설명설명</span>
-                        <p class="side">설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
-                    </div>
-                    <div class="group margin"></div>
-                    <div class="col two bg margin extrapad">
-                        <span class="feature side">설명</span>
-                        <span class="side">
-                            - 설명설명</span>
-                        <p class="side">설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
-                    </div>
-                    <div class="col two bg margin extrapad">
-                        <h1 class="icon side">4</h1>
-                        <span class="feature side">설명</span>
-                        <span class="side">
-                            - 설명설명</span>
-                        <p class="side">설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
-                    </div>
-                    <div class="group"></div>
-                </div>
+        <div class="container">
+            <h1>사용방법</h1>
+            <div class="col two bg margin extrapad">
+                <h1 class="icon side">1</h1>
+                <span class="feature side">모자이크 할 동영상 업로드</span>
+                <p class="side">상단의 왼쪽 구역에 모자이크 할 동영상을 첨부해주세요.</p>
             </div>
+            <div class="col two bg margin extrapad">
+                <h1 class="icon side">2</h1>
+                <span class="feature side">본인 얼굴 동영상 업로드</span>
+                <p class="side">유일하게 모자이크 처리 되지 않을 본인의 얼굴이 확실히 나오는 동영상을 첨부해주세요.</p>
+            </div>
+            <div class="group margin"></div>
+            <div class="col two bg margin extrapad">
+               <h1 class="icon side">3</h1>
+                <span class="feature side">확인하기</span>
+                <p class="side">올바른 동영상을 넣었는지 제목과 함께 확인해주세요.</p>
+            </div>
+            <div class="col two bg margin extrapad">
+                <h1 class="icon side">4</h1>
+                <span class="feature side">다운로드</span>
+                <p class="side">모자이크가 완료된 영상을 다운로드 받기 위해 창을 홈으로 이동해주세요.</p>
+            </div>
+            <div class="group"></div>
+        </div>
+    </div>
         
 
 </template>
@@ -164,6 +159,7 @@ export default {
       return str;
     },
   },
+ 
 };
 </script>
 
@@ -353,7 +349,7 @@ h1.hero:after {
 .col .service,
 .col .feature {
   font-size: 21px;
-  font-weight: 300;
+  font-weight: 400;
   font-family: 'Roboto Slab', sans-serif;
 }
 
@@ -393,7 +389,7 @@ h1.hero:after {
   position: absolute;
   padding: 0;
   margin: 0;
-  top: -15px;
+  top: -10px;
   height: 50px;
   width: 50px;
 }
@@ -417,7 +413,7 @@ h1.hero:after {
 
 .col p,
 .col h1 {
-  padding: 0 1%;
+  padding: 0 0%;
   text-align: center;
 }
 

@@ -2,8 +2,7 @@
 	<div class="hold">
     <div class="header">
       <ul class="navlg" @click="moveHome()">
-         <li><a href="/">MOSAIC WEB</a></li>
-          
+         <li><a>MOSAIC WEB</a></li>
         </ul>
           <ul class="nav">
             <div v-if="!this.$store.getters['token/getIsLogin']" class="headerItem" >

@@ -1,6 +1,6 @@
 <template>
+<div>
     <div class="bdlist">
-
 		<div class="AddWrap">
 			<form>
 				<table class="tbAdd">
@@ -8,19 +8,36 @@
 						<col width="15%" />
 						<col width="*" />
 					</colgroup>
-					<tr class="content" @click="move()" v-for="(v, i) in datas" :key="i">
-						<th>제목</th>
-						<td></td>
-					</tr>
-					<tr class="content" @click="move()" v-for="(v, i) in datas" :key="i">
-						<th>내용</th>
-						<td>{{v.content}}</td>
-					</tr>
+                <thead>
+                    <tr>
+                        <th>순서</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>생성일</th>
+                        <th>수정일</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                        <td>{{datas.id}}</td>
+                        <td>{{datas.title}}</td>
+                        <td>운영자</td>
+                        <td>{{datas.createdDate}}</td>
+                        <td>{{datas.modifiedDate}}</td>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>내용</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <td>{{datas.content}}</td>
+                </tbody>
 				</table>
 			</form>
 		</div>	
         <div class="btnWrap">
-			<a href="javascript:;" @click="fnList" class="btn">목록</a>
+			<a href="/" class="btn">목록</a>
 		</div>	
 	</div>
 
@@ -28,7 +45,7 @@
         <div class="container">
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
+                <h1 class="service"></h1>
                 <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
             </div>
             <div class="col two">
@@ -39,17 +56,18 @@
             <div class="group"></div>
         </div>
     </div>
-
+</div>
 </template>
 
 <script>
 export default {
-name: 'announcement',
     data(){
         return{
             datas: [],
-        }
+        };
     },
+  
+    
     mounted(){
       this.read();
     },
@@ -60,15 +78,15 @@ name: 'announcement',
                 'Authorization': 'Bearer '+Token
             }
             console.log(Token)
-            const url = 'http://localhost:8080/readboard?id=1';
+            const url = 'http://localhost:8080/readboard?id=6';
             this.axios({
                 method: 'get',
                 url: url,
                 headers: headers,
             })
-            .then(({data}) => {
-                this.datas = data
-                console.log('axios get success', data);
+            .then((res) => {
+                this.datas = res.data;
+                console.log('axios get success', res.data);
             }).catch((err) =>{
                 console.log('err',err);
             })

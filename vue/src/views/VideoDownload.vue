@@ -1,4 +1,5 @@
 <template>
+dfdfd
 <div class="wrap">
     <button v-on:click="download()">다운로드</button>
     <button v-on:click="upload()">업로드</button>
@@ -53,3 +54,6 @@ export default {
     },
 };
 </script>
+<style>
+
+</style>

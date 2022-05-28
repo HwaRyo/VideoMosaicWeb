@@ -26,18 +26,9 @@
   </tbody>
 </table>
 <div class="page-box">
-  <a class="btn" href="#">&lt;&lt;</a>
-  <a class="btn" href="#">&lt;</a>
-  
-  <!--  숫자 버튼  -->
-  <a class="btn number" href="#">1</a>
-  <a class="btn number" href="#">2</a>
-  <a class="btn number on" href="#">3</a>
-  <a class="btn number" href="#">4</a>
-  <a class="btn number" href="#">5</a>
-  
-  <a class="btn" href="#">&gt;</a>
-  <a class="btn" href="#">&gt;&gt;</a>
+ <a class="btn" href="#" @click="count('decrement')">이전</a>
+ <a class="btn on" href="#">{{Math.ceil(start/5)}}</a>
+ <a class="btn" href="#" @click="count('increment')">다음</a>
 </div>
  <div class="section">
         <div class="container">
@@ -64,6 +55,9 @@ export default {
     data(){
         return{
             datas: [],
+            boardList: [],
+            display : 5,
+            start : 1,
         }
     },
     mounted(){
@@ -92,6 +86,7 @@ export default {
             })
         },
         index(){
+          
             const Token = localStorage.getItem('token');
             const headers = {
                 'Authorization': 'Bearer '+Token
@@ -111,11 +106,23 @@ export default {
             })
         },
         move(){
-            location.href = "/BoardDetail";
-        }
-    },
-  
-}
+            location.href = "/BoardDetail?id=2";
+        },
+        count : function(param){
+          if(param=='increment'){
+            this.start += 5;
+          }else{
+            if(this.start<=5){
+              alert("최소값은 1페이지 입니다.");
+              return false;
+            }
+            this.start -= 5;
+          }
+          this.index(this.start);
+        },
+    }
+ }
+
 </script>
 
 <style>
