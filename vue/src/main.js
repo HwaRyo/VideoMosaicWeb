@@ -4,11 +4,10 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';    //axios 추가 
 import store from "./store";        //vuex 추가
 import { router } from './router/router.js';  //라우터 추가
-import jQuery from 'jquery';
+
 
 const app = createApp(App);
 app.use(VueAxios, axios);
 app.use(router);
 app.use(store);
 app.mount('#app');
-global.$ = jQuery

@@ -1,15 +1,28 @@
 <template>
-    <div>
-    <div class="sec">
-        <div class="loginlogo">
-            <div class="container slidercontent">
-                <h1 class="hero">소셜 로그인</h1>
-                <h2 class="hero">로그인 완료! 홈으로 돌아가셔서 기능을 이용하세요.</h2>
-                <input type="button" class="homebtn" value="홈으로 이동" @click="moveHome"/>
-            </div>
-        </div>
-    </div>
+    <div class="bdlist">
 
+		<div class="AddWrap">
+			<form>
+				<table class="tbAdd">
+					<colgroup>
+						<col width="15%" />
+						<col width="*" />
+					</colgroup>
+					<tr class="content" @click="move()" v-for="(v, i) in datas" :key="i">
+						<th>제목</th>
+						<td></td>
+					</tr>
+					<tr class="content" @click="move()" v-for="(v, i) in datas" :key="i">
+						<th>내용</th>
+						<td>{{v.content}}</td>
+					</tr>
+				</table>
+			</form>
+		</div>	
+        <div class="btnWrap">
+			<a href="javascript:;" @click="fnList" class="btn">목록</a>
+		</div>	
+	</div>
 
  <div class="section">
         <div class="container">
@@ -26,96 +39,70 @@
             <div class="group"></div>
         </div>
     </div>
-</div>
+
 </template>
+
 <script>
-// import { onMounted } from '@vue/runtime-core'
-// import useRoute from 'vue-router'
-// import {useStore} from "vuex"
-
 export default {
-    name: 'OauthHandler',
-    methods: {
-    moveHome(){
-                location.href = "/";
-            }
-},
-    mounted(){
-        const url = this.$route.fullPath;
-        const slice = url.split("token=");
-        const token = slice[1];
-        // 분기처리 
-        // token 존재 => /profile
-        // error 존재 => /
-        if(token){
-            this.$store.dispatch('token/setToken', token);
-            localStorage.setItem('token', token);
-            this.$store.dispatch('token/setIsLogin', true);
-            console.log(this.$store.getters['token/getToken']);
-            
-            this.$router.push({name: 'Home'});
-        }else{
-            this.$router.push('/');
+name: 'announcement',
+    data(){
+        return{
+            datas: [],
         }
-    }
-
-    // setup() {
-    //     const router = useRoute();    
-    //     const store = useStore();
-        
-    //     onMounted(() => {
-    //         const url = router.fullPath;
-    //         const slice = url.split("token=");
-    //         const token = slice[1];
-            
-    //         // 분기처리 
-    //         // token 존재 => /profile
-    //         // error 존재 => /
-    //         if(token){
-    //             store.dispatch('token/setToken', token);
-    //             localStorage.setItem('token', token);
-    //             store.dispatch('token/setIsLogin', true);
-    //             console.log(store.getters['token/getToken']);
-                
-    //             router.replace('/profile');
-    //         }else{
-    //             router.replace('/');
-    //         }
-    //     })
-    //     return{
-    //         router,
-    //         store
-    //     }
-    // },
+    },
+    mounted(){
+      this.read();
+    },
+    methods:{
+        read(){
+            const Token = localStorage.getItem('token');
+            const headers = {
+                'Authorization': 'Bearer '+Token
+            }
+            console.log(Token)
+            const url = 'http://localhost:8080/readboard?id=1';
+            this.axios({
+                method: 'get',
+                url: url,
+                headers: headers,
+            })
+            .then(({data}) => {
+                this.datas = data
+                console.log('axios get success', data);
+            }).catch((err) =>{
+                console.log('err',err);
+            })
+        },
+        move(){
+            location.href = "/";
+        }
+    },
+  
 }
-
 </script>
 
 <style>
-.homebtn{
-  background-color: #fa4e22;
-  border-radius: 15px;
-  border: none;
-  opacity: 0.4;
-  color: rgb(226, 226, 226);
-  padding: 30px 70px;
-  text-align: center;
-  font-size: 25px;
-  margin: 20px 2px;
-  transition: 0.3s;
-  display: inline-block;
-  text-decoration: none;
-  cursor: pointer;
-  
-}
-.homebtn:hover {opacity: 1}
+h1 {
+    align-items: center;
 
-.sec .loginlogo {
-    background: #f8a251;
 }
-    
+.bdlist {
+    align-items: center;
+}
+.tbAdd{
+    border-top:1px solid #888;
+    width:1000px;
 
-    /*
+}
+.tbAdd th, .tbAdd td{border-bottom:1px solid #eee; padding:5px 0; }
+.tbAdd td{padding:10px 10px; box-sizing:border-box; text-align:center;}
+.tbAdd td.txt_cont{height:300px; vertical-align:top;}
+.btnWrap{text-align:center; margin:20px 0 0 0;}
+.btnWrap a{margin:0 20px;}
+.btnAdd {background:#43b984}
+.btnDelete{background:#f00;}
+
+/*
   Slider
 */
 
@@ -349,7 +336,7 @@ h2 {
   color: #fff;
 }
 /*
-  Responsive
+  반응형
 */
 
 .group:after {

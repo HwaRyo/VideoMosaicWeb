@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class WebServiceImpl implements WebService{
@@ -32,6 +33,10 @@ public class WebServiceImpl implements WebService{
 
     public List<Board> indexBoard() throws Exception {
         return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    public Optional<Board> readBoard(BoardDTO boardDTO) throws Exception {
+        return boardRepository.findById(boardDTO.getId());
     }
 
     public Map<String, String> getProfile(String params){

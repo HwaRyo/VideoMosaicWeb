@@ -3,7 +3,7 @@
     <div class="header">
       <ul class="navlg" @click="moveHome()">
          <li><a href="/">MOSAIC WEB</a></li>
-          <!--<img class="App-logo" alt="SMU logo" src="@/assets/apple.png" >-->
+          
         </ul>
           <ul class="nav">
             <div v-if="!this.$store.getters['token/getIsLogin']" class="headerItem" >
@@ -13,7 +13,7 @@
               <li><a class="">로그아웃</a></li>
             </div>
             <div class="headerItem">
-            <li><a href="/Announcement">공지사항</a></li>
+            <li><a href="/BoardList">공지사항</a></li>
             </div>
           </ul>
       </div>
@@ -161,7 +161,7 @@ ul.nav li a {
 }
 
 ul.nav li:hover a {
-  color: red;
+  color: rgb(51, 124, 252);
 }
 
 ul.nav li a {

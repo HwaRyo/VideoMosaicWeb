@@ -22,10 +22,6 @@ const routes = [
         name: 'home',
         component: () => import ('@/views/Home')
     }, {
-        path: '/about',
-        name: 'about',
-        component: () => import ('@/views/About')
-    }, {
         path: '/fileupload',
         name: 'fileUpload',
         component: () => import ('@/views/FileUpload')
@@ -34,12 +30,16 @@ const routes = [
         name: 'fileDownload',
         component: () => import ('@/views/FileDownload')
     }, {
-        path: '/announcement',
-        name: 'announcement',
-        component: () => import ('@/views/Announcement')
-    }
+        path: '/boardlist',
+        name: 'boardlist',
+        component: () => import ('@/views/BoardList')
+    }, {
+        path: '/boarddetail',
+        name: 'boarddetail',
+        component: () => import ('@/views/BoardDetail')
+    },
+
 ];
 
 export const router = createRouter({history: createWebHistory(), routes})
-
 export default router

@@ -11,29 +11,29 @@
             </div>
         </div>
     </div>
-
     <div class="section bg">
         <div class="container">
             <h1>사용방법</h1>
             <div class="col two bg margin extrapad">
                 <h1 class="icon side">1</h1>
-                <span class="feature side">파일업로드</span>
-                <p class="side">설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
+                <span class="feature side">메인 동영상 준비</span>
+                <p class="side">본인 이외의 사람 얼굴을 자동으로 모자이크 할 영상파일을 준비하세요.</p>
             </div>
             <div class="col two bg margin extrapad">
                 <h1 class="icon side">2</h1>
-                <span class="feature side">영상 선택하기</span>
-                <p class="side">설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
+                <span class="feature side">본인 얼굴 영상 준비</span>
+                <p class="side">본인 얼굴이 확실하게 인식될 수 있는 영상 파일을 준비하세요.</p>
             </div>
-            <div class="group margin">3</div>
+            <div class="group margin"></div>
             <div class="col two bg margin extrapad">
-                <span class="feature side"></span>
-                <p class="side">설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
+               <h1 class="icon side">3</h1>
+                <span class="feature side">동영상 파일 업로드</span>
+                <p class="side">준비한 2가지의 영상을 파일 업로드 버튼을 누르셔서 첨부해주세요.</p>
             </div>
             <div class="col two bg margin extrapad">
                 <h1 class="icon side">4</h1>
-                <span class="feature side">설명</span>
-                <p class="side">설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
+                <span class="feature side">모자이크(업로드) 완료된 영상 다운로드</span>
+                <p class="side">모자이크가 완료된 영상을 파일 다운로드 버튼을 누르셔서 다운받으세요.</p>
             </div>
             <div class="group"></div>
         </div>
@@ -124,14 +124,7 @@
 }
 .downloadbtn:hover {opacity: 1}
 
-a {
-  text-decoration: none;
-  cursor: pointer;
-  color: #444;
-  font-size: 24px;
-  font-weight: 350;
-  font-family: 'Roboto Slab', sans-serif;
-}
+
 body {
   margin: 0;
   padding: 0;
@@ -157,7 +150,7 @@ body {
   width: 100%;
   margin: 0 auto;
   color: #444;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   font-family: Roboto, 'Open Sans', Arial, sans-serif;
   overflow: hidden;
@@ -309,7 +302,7 @@ h1.hero:after {
   position: absolute;
   padding: 0;
   margin: 0;
-  top: -15px;
+  top: -11px;
   height: 50px;
   width: 50px;
 }
@@ -351,7 +344,8 @@ h1.hero:after {
 }
 
 .col span.feature {
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 400;
 }
 /*
   Text

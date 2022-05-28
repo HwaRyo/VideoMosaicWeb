@@ -32,6 +32,7 @@ import java.nio.ByteOrder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -51,6 +52,11 @@ public class UserController {
     @GetMapping("/indexboard")
     public List<Board> insertBoard() throws Exception {
         return webService.indexBoard();
+    }
+
+    @GetMapping("/readboard")
+    public Optional<Board> readBoard(BoardDTO boardDTO) throws Exception {
+        return webService.readBoard(boardDTO);
     }
 
     @GetMapping("/profile")

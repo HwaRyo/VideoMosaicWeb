@@ -1,9 +1,10 @@
 <template>
+<button v-on:click="insert()">등록</button>
+    <button v-on:click="index()">목록</button>
   <table>
   <colgroup>
     <col class="number">
     <col class="title">
-    <col class="content">
     <col class="createDate">
     <col class="modifiedDate">
   </colgroup>
@@ -11,7 +12,6 @@
     <tr>
       <th>No</th>
       <th>제목</th>
-      <th>내용</th>
       <th>생성날짜</th>
       <th>수정날짜</th>
     </tr>
@@ -20,23 +20,8 @@
     <tr class="content" @click="move()" v-for="(v, i) in datas" :key="i">
       <td>{{i+1}}</td>
       <td>{{v.title}}</td>
-      <td>{{v.content}}</td>
-      <td>{{v.createDate}}</td>
+      <td>{{v.createdDate}}</td>
       <td>{{v.modifiedDate}}</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td><a href="#"></a></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
   </tbody>
 </table>
@@ -81,6 +66,9 @@ export default {
             datas: [],
         }
     },
+    mounted(){
+      this.index();
+    },
     methods:{
          insert(){
             const Token = localStorage.getItem('token');
@@ -123,7 +111,7 @@ export default {
             })
         },
         move(){
-            location.href = "/";
+            location.href = "/BoardDetail";
         }
     },
   
@@ -131,12 +119,13 @@ export default {
 </script>
 
 <style>
-/* 링크 색상 (중요하지 않음) 
-a {
+tr.content {
   text-decoration: none;
   color: #333;
 }
-a:hover {color: #6199ff;}*/
+tr.content:hover {color: #6199ff;}
+
+
 
 /* 테이블 색상 (중요하지 않음) */
 table {
@@ -151,29 +140,22 @@ th {
 td, th {
   border: 1px solid #dbdbdb;
   padding: 5px 20px;
-  font-size:12px;
+  font-size:20px;
 }
 tr:nth-of-type(odd) { 
 	background: #eee; 
 }
 
-/* 체크박스의 크기 
-.check {
-  width:15px;
-  height:15px;
-}*/
-
 /* 컬럼의 너비 */
 .number {width: 3%;}
-.title {width: 15%;}
-.content { /*나머지가 자동으로 맞춰집니다.*/ }
-.createdate {width: 20%;}
-.modifieddate {width: 15%;}
+.title {width: 63%;}
+.createdate {width: 5%;}
+.modifieddate {width: 5%;}
 
 /* 컬럼의 정렬 */
 tr td:nth-child(1){text-align:center;}
 tr td:nth-child(2){text-align:center;}
-tr td:nth-child(3){text-align:left;}
+tr td:nth-child(3){text-align:center;}
 tr td:nth-child(4){text-align:center;}
 tr td:nth-child(5){text-align:center;}
 

@@ -66,52 +66,7 @@ window.onscroll = function() {
   
 
 <style>
-a {
-  text-decoration: none;
-  cursor: pointer;
-  color: #444;
-  font-size: 24px;
-  font-weight: 350;
-  font-family: 'Roboto Slab', sans-serif;
-}
-body {
-  margin: 0;
-  padding: 0;
-}
 
-.fw {
-  text-decoration: none;
-  color:white;
-  cursor:pointer;
-}
-
-.fg {
-  text-decoration: none;
-  color:white;
-  cursor:pointer;
-}
-.section {
-  width: 100%;
-}
-
-.container {
-  position: relative;
-  width: 1170px;
-  margin: 0 auto;
-  color: #444;
-  font-size: 14px;
-  font-weight: 300;
-  font-family: Roboto, 'Open Sans', Arial, sans-serif;
-  overflow: hidden;
-}
-
-.section .container {
-  padding: 10px 0 10px 0;
-}
-
-.section.bg {
-  background: #c5d3fc;
-}
 
 
 
