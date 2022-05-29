@@ -13,7 +13,6 @@ import java.time.format.DateTimeFormatter;
 @Setter
 @Table(name = "board")
 public class Board {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,10 +29,12 @@ public class Board {
     @Column(name = "modifiedDate", nullable = false)
     private String modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
 
-
     public void update(String title, String content) {
         this.title = title;
         this.content = content;
+        this.modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     }
-
 }
+
+
+

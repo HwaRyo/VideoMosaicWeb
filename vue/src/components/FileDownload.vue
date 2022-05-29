@@ -1,7 +1,7 @@
 <template>
 <div class="wrap">
     <button v-on:click="insert()">등록</button>
-    <button v-on:click="index()">목록</button>
+    <!-- <button v-on:click="index()">목록</button> -->
     <table>
         <thead>
             <tr>
@@ -18,7 +18,7 @@
                 <td>{{i+1}}</td>
                 <td>{{v.title}}</td>
                 <td>{{v.content}}</td>
-                <td>{{v.createDate}}</td>
+                <td>{{v.createdDate}}</td>
                 <td>{{v.modifiedDate}}</td>
             </tr>
         </tbody>
@@ -33,13 +33,16 @@ export default {
             datas: [],
         }
     },
+    async mounted() {
+        await this.indexBoard();
+    },
     methods:{
          insert(){
             const Token = localStorage.getItem('token');
             const headers = {
                 'Authorization': 'Bearer '+Token
             }
-            const url = 'http://localhost:8080/insert';
+            const url = 'http://localhost:8080/insertboard';
             this.axios({
                 method: 'post',
                 url: url,
@@ -55,7 +58,7 @@ export default {
                 console.log('err',err);
             })
         },
-        index(){
+        indexBoard(){
             const Token = localStorage.getItem('token');
             const headers = {
                 'Authorization': 'Bearer '+Token

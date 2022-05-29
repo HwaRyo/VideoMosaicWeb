@@ -6,8 +6,7 @@ import lombok.*;
 
 
 @Data
-public class BoardDTO {
-    private Long id;
-    private String title;
-    private String content;
+public class UserDTO {
+    private String id;
+    private String pw;
 }

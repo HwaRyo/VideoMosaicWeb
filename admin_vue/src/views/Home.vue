@@ -5,9 +5,8 @@
             <div class="container slidercontent">
                 <h1 class="hero">영상 얼굴 인식 모자이크 웹</h1>
                 <h2 class="hero">체험해보세요!</h2>
-                <input type="button" class="uploadbtn" value="파일 업로드" @click="moveUpload"/>
-                <input type="button" class="downloadbtn" value="파일 다운로드" @click="moveDownload"/>
-                <br><br>
+                <input type="button" value="파일 업로드" @click="moveUpload"/>
+                <input type="button" value="파일 다운로드" @click="moveDownload"/>
             </div>
         </div>
     </div>
@@ -61,13 +60,6 @@
     export default {
         name: 'Home',
         methods: {
-            /*moveUpload(){
-                location.href = "/fileupload";
-            },
-            moveDownload(){
-                location.href = "/filedownload";
-            }*/
-
             moveUpload(){
                 if(!this.$store.getters['token/getIsLogin']){
                     alert("로그인을 진행해주세요!");
@@ -80,48 +72,10 @@
                     alert("로그인을 진행해주세요!");
                 }else{
                     location.href = "/filedownload"; 
-                }
+                }             
             }
-            
         }
     }
 </script>
 
-<style>
-.uploadbtn{
-  background-color: #3e7bf5;
-  border-radius: 15px;
-  border: none;
-  opacity: 0.4;
-  color: rgb(226, 226, 226);
-  padding: 30px 70px;
-  text-align: center;
-  font-size: 25px;
-  margin: 4px 2px;
-  transition: 0.3s;
-  display: inline-block;
-  text-decoration: none;
-  cursor: pointer;
-  
-}
-.uploadbtn:hover {opacity: 1}
-
-.downloadbtn{
-  background-color: #3e7bf5;
-  border-radius: 15px;
-  border: none;
-  opacity: 0.4;
-  color: rgb(226, 226, 226);
-  padding: 30px 57px;
-  text-align: center;
-  font-size: 25px;
-  margin: 4px 2px;
-  transition: 0.3s;
-  display: inline-block;
-  text-decoration: none;
-  cursor: pointer;
-  
-}
-.downloadbtn:hover {opacity: 1}
-
-</style>
+    <style></style>
