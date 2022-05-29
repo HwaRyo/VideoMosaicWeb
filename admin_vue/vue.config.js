@@ -1,6 +1,5 @@
 module.exports = {
-  devServer: {
-    overlay: false,
-    port: 8082,
-  },
-};
+    devServer: {
+        port: 8082
+    }
+}
