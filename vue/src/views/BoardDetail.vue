@@ -45,7 +45,7 @@
         <div class="container">
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service"></h1>
+                <h1 class="service">설명</h1>
                 <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
             </div>
             <div class="col two">
@@ -66,8 +66,6 @@ export default {
             datas: [],
         };
     },
-  
-    
     mounted(){
       this.read();
     },
@@ -78,7 +76,7 @@ export default {
                 'Authorization': 'Bearer '+Token
             }
             console.log(Token)
-            const url = 'http://localhost:8080/readboard?id=6';
+            const url = 'http://localhost:8080/readboard?id=1';
             this.axios({
                 method: 'get',
                 url: url,

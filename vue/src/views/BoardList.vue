@@ -25,11 +25,20 @@
     </tr>
   </tbody>
 </table>
-<div class="page-box">
- <a class="btn" href="#" @click="count('decrement')">이전</a>
- <a class="btn on" href="#">{{Math.ceil(start/5)}}</a>
- <a class="btn" href="#" @click="count('increment')">다음</a>
-</div>
+  <div class="btn-cover">
+      <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
+        이전
+      </button>
+      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
+      <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+        다음
+      </button>
+  </div>
+
+
+
+
+
  <div class="section">
         <div class="container">
             <div class="col two">
@@ -48,22 +57,37 @@
 
 </template>
 
-<script>
- 
+<script> 
 export default {
-  name: 'announcement',
+  name: 'boardlist',
     data(){
         return{
             datas: [],
-            boardList: [],
-            display : 5,
-            start : 1,
+            pageNum: 0
         }
     },
+    props: {
+      listArray:{
+        type: Array,
+        required: true
+      },
+    pageSize: {
+      type: Number,
+      required: false,
+      default: 5
+      }
+    },
+  
     mounted(){
       this.index();
     },
     methods:{
+      nextPage () {
+      this.pageNum += 1;
+    },
+      prevPage () {
+      this.pageNum -= 1;
+    },
          insert(){
             const Token = localStorage.getItem('token');
             const headers = {
@@ -86,7 +110,6 @@ export default {
             })
         },
         index(){
-          
             const Token = localStorage.getItem('token');
             const headers = {
                 'Authorization': 'Bearer '+Token
@@ -106,26 +129,41 @@ export default {
             })
         },
         move(){
-            location.href = "/BoardDetail?id=2";
-        },
-        count : function(param){
-          if(param=='increment'){
-            this.start += 5;
-          }else{
-            if(this.start<=5){
-              alert("최소값은 1페이지 입니다.");
-              return false;
-            }
-            this.start -= 5;
-          }
-          this.index(this.start);
-        },
+            location.href = "/BoardDetail";
+        }
+    },
+    computed: {
+    pageCount () {
+      let listLeng = this.datas.length,
+          listSize = this.pageSize,
+          page = Math.floor(listLeng / listSize);
+      if (listLeng % listSize > 0) page += 1;
+      return page;
+    },
+    paginatedData () {
+      const start = this.pageNum * this.pageSize,
+            end = start + this.pageSize;
+      return this.datas.slice(start, end);
     }
+  }
  }
 
 </script>
 
 <style>
+.btn-cover {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.btn-cover .page-btn {
+  width: 5rem;
+  height: 2rem;
+  letter-spacing: 0.5px;
+}
+.btn-cover .page-count {
+  padding: 0 1rem;
+}
+
 tr.content {
   text-decoration: none;
   color: #333;
@@ -147,7 +185,7 @@ th {
 td, th {
   border: 1px solid #dbdbdb;
   padding: 5px 20px;
-  font-size:20px;
+  font-size:16px;
 }
 tr:nth-of-type(odd) { 
 	background: #eee; 
@@ -509,4 +547,5 @@ h2 {
     display: none;
   }
 }
+
 </style>

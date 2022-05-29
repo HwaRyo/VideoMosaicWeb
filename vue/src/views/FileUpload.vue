@@ -164,10 +164,11 @@ export default {
 </script>
 
 <style>
+
 .dan-facevideo {
  border-radius: 15px;
   border: 3px dashed lightblue;
-  width: 80%;
+  width: 50%;
   height: 250px;
   display: flex;
   flex-direction: column;
@@ -183,7 +184,7 @@ export default {
 .dan-video {
  border-radius: 15px;
   border: 3px dashed lightblue;
-  width: 80%;
+  width: 100%;
   height: 250px;
   display: flex;
   flex-direction: column;
@@ -495,7 +496,7 @@ h2 {
 
 @media all and (max-width: 768px) {
   .container {
-    width: 95%;
+    width: 100%;
   }
   .col.four {
     width: 48%;
@@ -542,19 +543,19 @@ h2 {
 
 @media all and (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 100%;
   }
 }
 
 @media all and (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 100%;
   }
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 1100px) {
   .container {
-    width: 1170px;
+    width: 100%;
   }
 }
 
