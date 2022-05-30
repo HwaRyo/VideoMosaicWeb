@@ -4,42 +4,41 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import ('@/components/Login')
+        component: () => import ('@/views/Login')
     }, {
         path: '/oauth2/redirect',
         name: 'oauthHandler',
-        component: () => import ('@/components/OauthHandler')
+        component: () => import ('@/views/OauthHandler')
     }, {
         path: '/profile',
         name: 'profile',
-        component: () => import ('@/components/Profile')
+        component: () => import ('@/views/Profile')
     }, {
         path: '/download',
         name: 'videoDownload',
-        component: () => import ('@/components/videoDownload')
+        component: () => import ('@/views/VideoDownload')
     }, {
         path: '/',
         name: 'home',
-        component: () => import ('@/components/Home')
-    }, {
-        path: '/about',
-        name: 'about',
-        component: () => import ('@/components/About')
+        component: () => import ('@/views/Home')
     }, {
         path: '/fileupload',
         name: 'fileUpload',
-        component: () => import ('@/components/FileUpload')
+        component: () => import ('@/views/FileUpload')
     }, {
         path: '/filedownload',
         name: 'fileDownload',
-        component: () => import ('@/components/FileDownload')
+        component: () => import ('@/views/FileDownload')
     }, {
-        path: '/announcement',
-        name: 'announcement',
-        component: () => import ('@/components/Announcement')
-    }
+        path: '/boardlist',
+        name: 'boardlist',
+        component: () => import ('@/views/BoardList')
+    }, {
+        path: '/boarddetail',
+        name: 'boarddetail',
+        component: () => import ('@/views/BoardDetail')
+    },
 ];
 
 export const router = createRouter({history: createWebHistory(), routes})
-
 export default router

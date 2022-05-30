@@ -1,6 +1,5 @@
 {
   "name": "vue-client",
-
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,23 +9,23 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
-    "vue-axios": "^3.4.1",
     "axios": "^0.26.1",
     "core-js": "^3.6.5",
     "jquery": "^3.6.0",
     "js-file-download": "^0.4.12",
     "popper.js": "^1.16.1",
     "vue": "^3.1.5",
+    "vue-axios": "^3.4.1",
     "vue-google-login": "^2.0.5",
     "vue-router": "^4.0.10",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
+    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.15",
     "@vue/cli-plugin-vuex": "~4.5.15",
     "@vue/cli-service": "~4.5.15",
-    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
@@ -44,7 +43,7 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": { "no-mixed-spaces-and-tabs": 0}
   },
   "browserslist": [
     "> 1%",

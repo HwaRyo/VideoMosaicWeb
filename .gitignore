@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 vue/node_modules.zip
 =======
+=======
+>>>>>>> main
 
 ObjectTracking/deploy.prototxt.txt
 
@@ -36,5 +39,12 @@ ObjectTracking/model/custom/custom.xml
 ObjectTracking/pw.txt
 ObjectTracking/videoData/slice_test2_1.mp4
 mosaic/user/
+<<<<<<< HEAD
 >>>>>>> main
 face_detector/model/custom/custom.xml
+=======
+=======
+vue/node_modules.zip
+>>>>>>> web
+web/src/main/resources/20220530_044901.mp4
+>>>>>>> main
