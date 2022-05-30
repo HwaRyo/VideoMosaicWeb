@@ -16,15 +16,10 @@
       <p class="dan-up-vid-sub-text">영상을 여기에 끌어다 놓으세요!</p>
     </div>
     <div v-show="files.length > 0" class="dan-up-vid-back-body">
-      <div
-        class="dan-up-vid-file-name"
-        :key="index"
-        v-for="(fil, index) in files"
-      >
+      <div class="dan-up-vid-file-name" :key="index" v-for="(fil, index) in files">
         <img width="30" :src="fil.img" />
         {{ limitStr(fil.file.name, 15) }}
-        <button
-          class="dan-up-vid-button"
+        <button class="dan-up-vid-button"
           :id="fil.id"
           @click="eliminatevid(fil.id)"
         >
@@ -106,7 +101,7 @@ export default {
   name: "DanUpvid",
   data() {
     return {
-      file: null,
+      file: [],
       files: this.dataFile,
     };
   },
