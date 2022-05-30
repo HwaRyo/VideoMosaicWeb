@@ -38,7 +38,6 @@ const routes = [
         name: 'boarddetail',
         component: () => import ('@/views/BoardDetail')
     },
-
 ];
 
 export const router = createRouter({history: createWebHistory(), routes})

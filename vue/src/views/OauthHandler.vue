@@ -1,31 +1,5 @@
 <template>
-    <div>
-    <div class="sec">
-        <div class="loginlogo">
-            <div class="container slidercontent">
-                <h1 class="hero">소셜 로그인</h1>
-                <h2 class="hero">로그인 완료! 홈으로 돌아가셔서 기능을 이용하세요.</h2>
-                <input type="button" class="homebtn" value="홈으로 이동" @click="moveHome"/>
-            </div>
-        </div>
-    </div>
-
-
- <div class="section">
-        <div class="container">
-            <div class="col two">
-                <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
-            </div>
-            <div class="col two">
-                <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
-            </div>
-            <div class="group"></div>
-        </div>
-    </div>
+<div>
 </div>
 </template>
 <script>
@@ -53,7 +27,7 @@ export default {
             this.$store.dispatch('token/setIsLogin', true);
             console.log(this.$store.getters['token/getToken']);
             
-            this.$router.push({name: 'Home'});
+            this.$router.push({name: 'home'});
         }else{
             this.$router.push('/');
         }

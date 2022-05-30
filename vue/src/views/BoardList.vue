@@ -93,7 +93,7 @@ export default {
             const headers = {
                 'Authorization': 'Bearer '+Token
             }
-            const url = 'http://localhost:8080/insert';
+            const url = 'http://localhost:8080/board/insert';
             this.axios({
                 method: 'post',
                 url: url,
@@ -115,7 +115,7 @@ export default {
                 'Authorization': 'Bearer '+Token
             }
             console.log(Token)
-            const url = 'http://localhost:8080/indexboard';
+            const url = 'http://localhost:8080/board/index';
             this.axios({
                 method: 'get',
                 url: url,

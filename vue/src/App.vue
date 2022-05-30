@@ -1,6 +1,5 @@
 <template>
   <Header />
-
  <router-view></router-view>
   <Footer />
 </template>
@@ -29,7 +28,6 @@ export default {
   components: {
     Header          //헤더 컴포넌트 추가
     ,Footer         //풋터 컴포넌트 추가
-    
   },
 
   setup(){

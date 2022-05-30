@@ -64,6 +64,9 @@
     </div>
   </div>
 </div>
+<div>
+  <button v-on:click="upload()">업로드</button>
+</div>
 
 <div class="section bg">
         <div class="container">
@@ -153,6 +156,33 @@ export default {
 
       return str;
     },
+    upload(){
+            var result = confirm("파일을 업로드 하시겠습니까?");
+            if (result){
+              const Token = localStorage.getItem('token');
+              const headers = {
+                'Authorization': 'Bearer '+Token,
+                'Content-Type': 'multipart/form-data'
+              }
+              const url = 'http://localhost:8080/video/upload';
+              console.log('url',url);
+
+              var frm = new FormData();
+              frm.append("video", this.file);
+
+              this.axios({
+                method: 'post',
+                url: url,
+                headers: headers,
+                data: frm
+              })
+              .then(({data}) => {
+                  console.log('axios get success', data);
+              }).catch((err) =>{
+                  console.log('err',err);
+              })
+            }
+        }, 
   },
  
 };
