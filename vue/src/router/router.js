@@ -3,39 +3,39 @@ import {createWebHistory, createRouter} from 'vue-router';
 const routes = [
     {
         path: '/login',
-        name: 'Login',
+        name: 'login',
         component: () => import ('@/components/Login')
     }, {
         path: '/oauth2/redirect',
-        name: 'OauthHandler',
+        name: 'oauthHandler',
         component: () => import ('@/components/OauthHandler')
     }, {
         path: '/profile',
-        name: 'Profile',
+        name: 'profile',
         component: () => import ('@/components/Profile')
     }, {
         path: '/download',
-        name: 'VideoDownload',
-        component: () => import ('@/views/VideoDownload')
+        name: 'videoDownload',
+        component: () => import ('@/components/videoDownload')
     }, {
         path: '/',
-        name: 'Home',
+        name: 'home',
         component: () => import ('@/components/Home')
     }, {
         path: '/about',
-        name: 'About',
+        name: 'about',
         component: () => import ('@/components/About')
     }, {
         path: '/fileupload',
-        name: 'FileUpload',
+        name: 'fileUpload',
         component: () => import ('@/components/FileUpload')
     }, {
         path: '/filedownload',
-        name: 'FileDownload',
+        name: 'fileDownload',
         component: () => import ('@/components/FileDownload')
     }, {
         path: '/announcement',
-        name: 'Announcement',
+        name: 'announcement',
         component: () => import ('@/components/Announcement')
     }
 ];
