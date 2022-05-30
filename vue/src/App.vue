@@ -1,6 +1,5 @@
 <template>
   <Header />
-
  <router-view></router-view>
   <Footer />
 </template>
@@ -8,10 +7,6 @@
 <script>
 import Header from '@/components/Header'; //import 헤더 추가
 import Footer from '@/components/Footer'; //import 풋터 추가
-<<<<<<< HEAD
-
-=======
->>>>>>> web
 import { onMounted } from '@vue/runtime-core'
 import {computed} from 'vue';
 import {useStore} from 'vuex';
@@ -33,7 +28,6 @@ export default {
   components: {
     Header          //헤더 컴포넌트 추가
     ,Footer         //풋터 컴포넌트 추가
-    
   },
 
   setup(){

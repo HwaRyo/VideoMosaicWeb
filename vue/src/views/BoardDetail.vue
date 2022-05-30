@@ -76,7 +76,7 @@ export default {
                 'Authorization': 'Bearer '+Token
             }
             console.log(Token)
-            const url = 'http://localhost:8080/readboard?id=1';
+            const url = 'http://localhost:8080/board/read?id=1';
             this.axios({
                 method: 'get',
                 url: url,
