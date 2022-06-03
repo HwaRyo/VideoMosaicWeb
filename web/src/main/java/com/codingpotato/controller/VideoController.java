@@ -83,6 +83,6 @@ public class VideoController {
         File file2 = new File("D:\\Git\\VideoMosaicWeb\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+"2.mp4");
         face.transferTo(file2);
 
-//        videoService.uploadVideo(video, userEmail);
+//        videoService.uploadVideo(video, face, userEmail);
     }
 }

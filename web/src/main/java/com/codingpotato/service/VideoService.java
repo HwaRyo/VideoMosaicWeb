@@ -15,16 +15,18 @@ import java.time.format.DateTimeFormatter;
 @Service
 public class VideoService {
 
-    public void uploadVideo(MultipartFile video, String userEmail) throws Exception {
+    public void uploadVideo(MultipartFile video, MultipartFile face, String userEmail) throws Exception {
 
 
-        File file = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+".mp4");
-        video.transferTo(file);
+        File file1 = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+".mp4");
+        video.transferTo(file1);
+
+        File file2 = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+".mp4");
+        face.transferTo(file2);
 
         String ip = "192.168.0.2";
         int port = 50001;
 
-        String path2 = "C:\\Users\\leonilpark\\Documents\\Final_Project\\ObjectTracking\\videoData\\slice_test2_1.mp4";
         Socket socket = new Socket(ip, port);
         OutputStream os = socket.getOutputStream();
         FileInputStream fin1;
@@ -32,8 +34,8 @@ public class VideoService {
         InputStream is = socket.getInputStream();
         DataInputStream dis = new DataInputStream(is);
         String msg="";
-        fin1 = new FileInputStream(file); //FileInputStream - 파일에서 입력받는 스트림을 개통합니다.
-        fin2 = new FileInputStream(new File(path2)); //FileInputStream - 파일에서 입력받는 스트림을 개통합니다.
+        fin1 = new FileInputStream(file1);
+        fin2 = new FileInputStream(file2); //FileInputStream - 파일에서 입력받는 스트림을 개통합니다.
         byte[] buffer = new byte[1024];        //바이트단위로 임시저장하는 버퍼를 생성합니다.
 
 
@@ -57,16 +59,14 @@ public class VideoService {
 
         fin1.close();
 
-        fin1 = new FileInputStream(file);   //FileInputStream이 만료되었으니 새롭게 개통합니다.
+        fin1 = new FileInputStream(file1);   //FileInputStream이 만료되었으니 새롭게 개통합니다.
         byte[] byteArr = String.valueOf(data).getBytes("UTF-8");
 
         os.write(byteArr);                   //데이터 전송횟수를 서버에 전송하고,
-//            os.writeUTF(path);               //파일의 이름을 서버에 전송합니다.
 
         len = 0;
 
         System.out.println(is.read(buffer));
-//        a = is.readAllBytes();
 
         for (; data > 0; data--) {                   //데이터를 읽어올 횟수만큼 FileInputStream에서 파일의 내용을 읽어옵니다.
             len = fin1.read(buffer);        //FileInputStream을 통해 파일에서 입력받은 데이터를 버퍼에 임시저장하고 그 길이를 측정합니다.
@@ -81,7 +81,7 @@ public class VideoService {
         data = 0;
 
         System.out.println(is.read(buffer));
-//        a = is.readAllBytes();
+
         System.out.println("target video send...");
 
         byte[] buffer2 = new byte[1024];        //바이트단위로 임시저장하는 버퍼를 생성합니다.
@@ -95,13 +95,12 @@ public class VideoService {
         datas = data;                      //아래 for문을 통해 data가 0이되기때문에 임시저장한다.
 
         fin2.close();
-        fin2 = new FileInputStream(path2);   //FileInputStream이 만료되었으니 새롭게 개통합니다.
+        fin2 = new FileInputStream(file2);   //FileInputStream이 만료되었으니 새롭게 개통합니다.
         byteArr = String.valueOf(data).getBytes();
 
         os.write(byteArr);                   //데이터 전송횟수를 서버에 전송하고,
 
         System.out.println(is.read(buffer));
-
 
         len = 0;
 
@@ -115,6 +114,7 @@ public class VideoService {
         System.out.println(is.read(buffer));
 
         socket.close();
-        file.delete();
+        file1.delete();
+        file2.delete();
     }
 }
