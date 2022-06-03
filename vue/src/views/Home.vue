@@ -235,7 +235,7 @@ h1.hero:after {
 
 .col.four {
   width: 23%;
-  margin: 0 1%;
+  margin: 0 10%;
 }
 
 .col.three {
@@ -409,7 +409,7 @@ h2 {
 
 @media all and (max-width: 768px) {
   .container {
-    width: 95%;
+    width: 100%;
   }
   .col.four {
     width: 48%;
@@ -456,19 +456,19 @@ h2 {
 
 @media all and (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 100%;
   }
 }
 
 @media all and (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 100%;
   }
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 1100px) {
   .container {
-    width: 1170px;
+    width: 100%;
   }
 }
 

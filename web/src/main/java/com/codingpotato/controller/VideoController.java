@@ -45,9 +45,7 @@ public class VideoController {
 
         File dir = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\mosaic\\user\\"+userEmail+"\\video");
         String[] filenames = dir.list((f,name)->name.endsWith(".mp4"));
-        for (int i = 0; i < filenames.length; i++) {
-            System.out.println("file: " + filenames[i]);
-        }
+
         return filenames;
     }
 
@@ -75,9 +73,16 @@ public class VideoController {
 
     @PostMapping(value = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public void uploadvideo(@RequestHeader Map<String, Object> requestHeader,
-                            @RequestParam(value = "video") MultipartFile video) throws Exception {
+                            @RequestParam(value = "video") MultipartFile video,
+                            @RequestParam(value = "face") MultipartFile face) throws Exception {
         String reqToken = requestHeader.get("authorization").toString().replace("Bearer ", "");
         String userEmail = tokenProvider.getUserEmailFromToken(reqToken);
-        videoService.uploadVideo(video, userEmail);
+
+        File file1 = new File("D:\\Git\\VideoMosaicWeb\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+"1.mp4");
+        video.transferTo(file1);
+        File file2 = new File("D:\\Git\\VideoMosaicWeb\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+"2.mp4");
+        face.transferTo(file2);
+
+//        videoService.uploadVideo(video, userEmail);
     }
 }

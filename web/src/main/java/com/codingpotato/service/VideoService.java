@@ -24,7 +24,6 @@ public class VideoService {
         String ip = "192.168.0.2";
         int port = 50001;
 
-//        String path1 = "C:\\Users\\leonilpark\\Documents\\Final_Project\\ObjectTracking\\videoData\\slice_test2.mp4";
         String path2 = "C:\\Users\\leonilpark\\Documents\\Final_Project\\ObjectTracking\\videoData\\slice_test2_1.mp4";
         Socket socket = new Socket(ip, port);
         OutputStream os = socket.getOutputStream();
@@ -37,9 +36,8 @@ public class VideoService {
         fin2 = new FileInputStream(new File(path2)); //FileInputStream - 파일에서 입력받는 스트림을 개통합니다.
         byte[] buffer = new byte[1024];        //바이트단위로 임시저장하는 버퍼를 생성합니다.
 
-//      dos.writeUTF("wjstmdnr@naver.com");
-        os.write("SeungWook0502@gmail.com".getBytes("UTF-8"));
-//        byte[] a = is.readAllBytes();
+
+        os.write(userEmail.getBytes("UTF-8"));
 
         System.out.println("mail send...");
 
@@ -103,7 +101,7 @@ public class VideoService {
         os.write(byteArr);                   //데이터 전송횟수를 서버에 전송하고,
 
         System.out.println(is.read(buffer));
-//        a = is.readAllBytes();
+
 
         len = 0;
 
@@ -115,7 +113,7 @@ public class VideoService {
         System.out.println("약 " + datas + " kbyte");
 
         System.out.println(is.read(buffer));
-//        a = is.readAllBytes();
+
         socket.close();
         file.delete();
     }

@@ -10,7 +10,6 @@
 					</colgroup>
                 <thead>
                     <tr>
-                        <th>순서</th>
                         <th>제목</th>
                         <th>작성자</th>
                         <th>생성일</th>
@@ -19,19 +18,18 @@
                 </thead>
 
                 <tbody>
-                        <td>{{datas.id}}</td>
                         <td>{{datas.title}}</td>
-                        <td>운영자</td>
+                        <td>관리자</td>
                         <td>{{datas.createdDate}}</td>
                         <td>{{datas.modifiedDate}}</td>
                 </tbody>
                 <thead>
                     <tr>
-                        <th>내용</th>
+                        <th colspan="4">내용</th>
                     </tr>
                 </thead>
                 <tbody>
-                        <td>{{datas.content}}</td>
+                        <td colspan="4">{{datas.content}}</td>
                 </tbody>
 				</table>
 			</form>
@@ -75,8 +73,8 @@ export default {
             const headers = {
                 'Authorization': 'Bearer '+Token
             }
-            console.log(Token)
-            const url = 'http://localhost:8080/board/read?id=1';
+            console.log(this.$route.params.id)
+            const url = 'http://localhost:8080/board/read?id='+this.$route.params.id;
             this.axios({
                 method: 'get',
                 url: url,
