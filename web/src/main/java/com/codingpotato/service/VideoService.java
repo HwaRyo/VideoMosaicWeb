@@ -21,7 +21,7 @@ public class VideoService {
         File file = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+".mp4");
         video.transferTo(file);
 
-        String ip = "192.168.0.2";
+        String ip = "192.168.0.6";
         int port = 50001;
 
         String path2 = "C:\\Users\\leonilpark\\Documents\\Final_Project\\ObjectTracking\\videoData\\slice_test2_1.mp4";

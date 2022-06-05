@@ -55,17 +55,10 @@ class pythonModel:
 					if startX > frame.shape[0] or endX > frame.shape[0] or startY > frame.shape[1] or endY > frame.shape[1]:
 						continue
 					rects.append(box.astype("int"))
-					frame = recogModel.recognization(startX, startY, endX-startX, endY-startY, frame)
 
 			objects = centTrac.update(rects)
-			for (objectID, centroid) in objects.items():
-
-				text = "ID {}".format(objectID)
-				# face recognition code add
-
-				cv2.putText(frame, text, (centroid[0] - 10, centroid[1] - 10),
-					cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-				cv2.circle(frame, (centroid[0], centroid[1]), 4, (0, 255, 0), -1)
+			for (_, coordinate) in objects.items():
+				frame = recogModel.recognization(coordinate[0], coordinate[1], coordinate[2] - coordinate[0], coordinate[3] - coordinate[1], frame)
 
 
 			videoWriter.write(frame)
