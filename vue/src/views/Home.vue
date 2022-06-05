@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="bg-img">
     <div class="section">
         <div class="slider">
             <div class="container slidercontent">
@@ -40,16 +40,16 @@
     </div>
 
     <div class="section">
-        <div class="container">
+        <div class="containertwo">
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">손으로 언제다 모자이크 할거야?</h1>
-                <p>편집을 해본 사람만 아는 노가다 모자이크 작업은 이제 그만</p>
+                <h1 class="service">자동 모자이크 서비스</h1>
+                <p>간편한 자동 모자이크 서비스로 일찍 퇴근 완료!</p>
             </div>
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">초상권 침해 언제까지 할거야?</h1>
-                <p>공개적인 영상이라면 더욱 모자이크 처리를 잘 하자</p>
+                <h1 class="service">서버 기반 서비스</h1>
+                <p>느릿느릿한 컴퓨터로 편집은 이제 그만!</p>
             </div>
             <div class="group"></div>
         </div>
@@ -61,14 +61,14 @@
     export default {
         name: 'Home',
         methods: {
-            /*moveUpload(){
+            moveUpload(){
                 location.href = "/fileupload";
             },
             moveDownload(){
                 location.href = "/filedownload";
-            }*/
+            }
 
-            moveUpload(){
+            /*moveUpload(){
                 if(!this.$store.getters['token/getIsLogin']){
                     alert("로그인을 진행해주세요!");
                 }else{
@@ -81,19 +81,21 @@
                 }else{
                     location.href = "/FileDownload"; 
                 }
-            }
+            }*/
             
         }
     }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+
 .uploadbtn{
-  background-color: #3e7bf5;
+  background-image: linear-gradient(to bottom right, #cdcbcb, #eae9e9);
   border-radius: 15px;
   border: none;
   opacity: 0.4;
-  color: rgb(226, 226, 226);
+  color: rgb(0, 0, 0);
   padding: 30px 70px;
   text-align: center;
   font-size: 25px;
@@ -102,16 +104,17 @@
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
   
 }
 .uploadbtn:hover {opacity: 1}
 
 .downloadbtn{
-  background-color: #3e7bf5;
+  background-image: linear-gradient(to bottom right, #cdcbcb, #eae9e9);
   border-radius: 15px;
   border: none;
   opacity: 0.4;
-  color: rgb(226, 226, 226);
+   color: rgb(0, 0, 0);
   padding: 30px 57px;
   text-align: center;
   font-size: 25px;
@@ -120,6 +123,7 @@
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
   
 }
 .downloadbtn:hover {opacity: 1}
@@ -128,6 +132,7 @@
 body {
   margin: 0;
   padding: 0;
+  background: url('http://unsplash.it/1200x800') 
 }
 
 .fw {
@@ -143,33 +148,45 @@ body {
 }
 .section {
   width: 100%;
+	background-position: center;
+	background-repeat: repeat;
+	background-size: 7%;
+	background-color: #fff;
+	overflow-x: hidden;
+  transition: all 200ms linear;
+  
+
 }
 
 .container {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  color: #444;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
-  font-family: Roboto, 'Open Sans', Arial, sans-serif;
+  font-family: 'Nanum Gothic Coding', monospace;
   overflow: hidden;
+  padding:30px 0 30px 0;
+  
 }
 
-.section .container {
-  padding: 10px 0 10px 0;
+.section .containertwo {
+  padding: 30px 0 30px 0;
+  background:rgba(236, 235, 235, 0.564)
+  
+  
 }
 
 .section.bg {
-  background: #c5d3fc;
+  background: rgb(255, 255, 255)
+  
 }
 /*
   Slider
 */
 
-.section .slider,
-.section .footer {
-  background: rgb(117, 150, 241);
+.section .slider {
+  background: rgb(34, 40, 49);
 }
 
 .slidercontent {
@@ -178,7 +195,6 @@ body {
 
 
 .hero {
-  font-family: 'Roboto Slab', sans-serif;
   color: white;
   font-weight: normal;
   letter-spacing: 1px;
@@ -233,10 +249,7 @@ h1.hero:after {
   position: relative;
 }
 
-.col.four {
-  width: 23%;
-  margin: 0 1%;
-}
+
 
 .col.three {
   width: 31.3%;
@@ -247,11 +260,16 @@ h1.hero:after {
   width: 40%;
   margin: 0 2.5%;
   padding: 0 2.5%;
+  background: rgb(221, 221, 221);
+  border-radius: 10px;
+  box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
+
 }
 
 .col.extrapad {
   padding-top: 20px;
   padding-bottom: 20px;
+   color: rgba(255, 255, 255, 0.771);
 }
 .col.five {
   width: 2424%;
@@ -263,14 +281,15 @@ h1.hero:after {
 .col .feature {
   font-size: 21px;
   font-weight: 700;
-  font-family: 'Roboto Slab', sans-serif;
+  color:#000; 
+  
 }
 
 .col .service:after {
   content: "";
   width: 50px;
   position: relative;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgb(0, 0, 0);
   display: block;
   text-align: center;
   margin: auto;
@@ -286,6 +305,7 @@ h1.hero:after {
 .col span.side:first-of-type {
   margin-left: 50px;
   text-align: left;
+  color:#000;
 }
 
 .col .icon {
@@ -307,15 +327,9 @@ h1.hero:after {
   width: 50px;
 }
 
-.col:hover > .icon {
-  background: #F44336;
-  color: white;
-}
 
-.col:hover > .icon.side {
-  background: initial;
-  color: initial;
-}
+
+
 
 .responsivegroup {
   display: none;
@@ -336,7 +350,8 @@ h1.hero:after {
 
 
 .col.bg {
-  background: rgb(231, 234, 255);
+  background-image: rgb(221, 221, 221);
+  border-radius: 10px;
 }
 
 .col.pointer {
@@ -368,7 +383,6 @@ h1.hero:after {
 }
 
 h2 {
-  font-family: 'Roboto Slab', sans-serif;
   text-align: center;
   font-weight: 400;
   font-size: 18px;
@@ -409,7 +423,7 @@ h2 {
 
 @media all and (max-width: 768px) {
   .container {
-    width: 95%;
+    width: 100%;
   }
   .col.four {
     width: 48%;
@@ -456,19 +470,19 @@ h2 {
 
 @media all and (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 100%;
   }
 }
 
 @media all and (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 100%;
   }
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 1100px) {
   .container {
-    width: 1170px;
+    width: 100%;
   }
 }
 

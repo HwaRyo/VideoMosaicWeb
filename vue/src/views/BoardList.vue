@@ -1,6 +1,13 @@
 <template>
-<button v-on:click="insert()">등록</button>
-    <button v-on:click="index()">목록</button>
+<div class="section">
+    <div class="slider">
+      <div class="container slidercontent">
+        <h1 class="hero">FAQ(자주 묻는 질문)
+        </h1>
+        <h2 class="hero">웹에 대한 궁금증을 풀어보세요!</h2>
+      </div>
+    </div>     
+  </div>
   <table>
   <colgroup>
     <col class="number">
@@ -43,13 +50,13 @@
         <div class="container">
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+                <h1 class="service">글 쓰기, 수정, 삭제 불가</h1>
+                <p>사용자분들은 오직 FAQ 글을 클릭하여 확인만 가능합니다.</p>
             </div>
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+                <h1 class="service">글은 관리자로부터</h1>
+                <p>글은 개발자들(관리자들)부터 작성됩니다. </p>
             </div>
             <div class="group"></div>
         </div>
@@ -179,12 +186,12 @@ table {
   border-collapse: collapse;
 }
 th {
-  background: #3498db;
+  background: rgb(34, 40, 49);
   color: #fff;
 }
 td, th {
-  border: 1px solid #dbdbdb;
-  padding: 5px 20px;
+  border: 2px solid #dbdbdb;
+  padding: 5px 30px;
   font-size:16px;
 }
 tr:nth-of-type(odd) { 
@@ -223,13 +230,29 @@ tr td:nth-child(5){text-align:center;}
 }
 
 
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Nanum Gothic Coding', monospace;
+  overflow: hidden;
+  
+}
+
+.section .container {
+  padding: 30px 0 30px 0;
+  
+}
+
+
 /*
   Slider
 */
 
-.section .slider,
-.section .footer {
-  background: rgb(117, 150, 241);
+.section .slider {
+  background: rgb(34, 40, 49);
 }
 
 .slidercontent {
@@ -238,7 +261,6 @@ tr td:nth-child(5){text-align:center;}
 
 
 .hero {
-  font-family: 'Roboto Slab', sans-serif;
   color: white;
   font-weight: normal;
   letter-spacing: 1px;
@@ -293,10 +315,7 @@ h1.hero:after {
   position: relative;
 }
 
-.col.four {
-  width: 23%;
-  margin: 0 1%;
-}
+
 
 .col.three {
   width: 31.3%;
@@ -307,11 +326,16 @@ h1.hero:after {
   width: 40%;
   margin: 0 2.5%;
   padding: 0 2.5%;
+  background: rgba(221,221,221);
+  border-radius: 10px;
+  box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
+
 }
 
 .col.extrapad {
   padding-top: 20px;
   padding-bottom: 20px;
+   color: rgba(255, 255, 255, 0.771);
 }
 .col.five {
   width: 2424%;
@@ -322,15 +346,15 @@ h1.hero:after {
 .col .service,
 .col .feature {
   font-size: 21px;
-  font-weight: 300;
-  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 700;
+  
 }
 
 .col .service:after {
   content: "";
   width: 50px;
   position: relative;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgb(0, 0, 0);
   display: block;
   text-align: center;
   margin: auto;
@@ -362,20 +386,14 @@ h1.hero:after {
   position: absolute;
   padding: 0;
   margin: 0;
-  top: -15px;
+  top: -11px;
   height: 50px;
   width: 50px;
 }
 
-.col:hover > .icon {
-  background: #F44336;
-  color: white;
-}
 
-.col:hover > .icon.side {
-  background: initial;
-  color: initial;
-}
+
+
 
 .responsivegroup {
   display: none;
@@ -386,7 +404,7 @@ h1.hero:after {
 
 .col p,
 .col h1 {
-  padding: 0 1%;
+  padding: 0 0%;
   text-align: center;
 }
 
@@ -396,7 +414,8 @@ h1.hero:after {
 
 
 .col.bg {
-  background: rgb(231, 234, 255);
+  background-image: linear-gradient(to bottom right, #2252b1, #dc4225);
+  border-radius: 10px;
 }
 
 .col.pointer {
@@ -404,7 +423,8 @@ h1.hero:after {
 }
 
 .col span.feature {
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 400;
 }
 /*
   Text
@@ -427,7 +447,6 @@ h1.hero:after {
 }
 
 h2 {
-  font-family: 'Roboto Slab', sans-serif;
   text-align: center;
   font-weight: 400;
   font-size: 18px;
@@ -468,7 +487,7 @@ h2 {
 
 @media all and (max-width: 768px) {
   .container {
-    width: 95%;
+    width: 100%;
   }
   .col.four {
     width: 48%;
@@ -515,19 +534,19 @@ h2 {
 
 @media all and (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 100%;
   }
 }
 
 @media all and (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 100%;
   }
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 1100px) {
   .container {
-    width: 1170px;
+    width: 100%;
   }
 }
 

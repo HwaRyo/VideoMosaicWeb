@@ -1,40 +1,29 @@
 <template>
-<div>
-    <div class="sec">
-        <div class="loginlogo">
-            <div class="container slidercontent">
-                <h1 class="hero">소셜 로그인</h1>
-                <h2 class="hero">구글 계정과 연동하여 로그인하세요!</h2>
-            </div>
-        </div>
-    </div>
-
-   <div class="wrap">
-    <div v-if="!this.$store.getters['token/getIsLogin']" class="google-btn" @click="sendGoogleUrl">
-        <div class="google-icon-wrapper">
-            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-        </div>
-        <p class="btn-text"><b>Sign in with google</b></p>
-    </div>
+<div class="section">
+    <div class="slider">
+      <div class="container slidercontent">
+        <h1 class="hero">소셜 로그인</h1>
+        <h2 class="hero">구글 계정과 연동하여 로그인하세요!</h2>
+        <button v-if="!this.$store.getters['token/getIsLogin']" @click="sendGoogleUrl" class="google-btn btn-7"><span>구글 계정으로 로그인하기</span></button>
+      </div>
+    </div>     
 </div>
-<br><br><br><br><br><br>
 
  <div class="section">
         <div class="container">
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+                <h1 class="service">구글 계정 가지고 계시죠?</h1>
+                <p>소셜 로그인을 먼저 진행해주세요!</p>
             </div>
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+                <h1 class="service">간편한 로그인</h1>
+                <p>빠른 시간 내에 로그인을 해서 이용합시다!</p>
             </div>
             <div class="group"></div>
         </div>
     </div>
-</div>
 </template>
 <script>
     import {computed} from 'vue';
@@ -64,81 +53,128 @@
     };
 </script>
 <style >
-    .sec .loginlogo {
-        background: #f8a251;
-    }
-    .wrap {
-        width: 100%;
-        height: 100%;
-    }
-    .google-btn {
-        width: 240px;
-        height: 55px;
-        background-color: #f17909;
-        border-radius: 2px;
-        box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
-        margin: 50px auto 0;
-    }
-    .google-btn-login {
-        width: 240px;
-        height: 55px;
-        background-color: #fff;
-        border-radius: 2px;
-        box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
-        margin: 50px auto 0;
-    }
-    .google-icon-wrapper {
-        position: absolute;
-        margin-top: 1px;
-        margin-left: 1px;
-        width: 53px;
-        height: 53px;
-        border-radius: 2px;
-        background-color: #f17909;
-    }
-    .google-icon {
-        position: absolute;
-        margin-top: 18px;
-        margin-right: 18px;
-        width: 24px;
-        height: 24px;
-    }
-    .btn-text {
-        float: right;
-        margin: 18px 18px 0 0;
-        color: #fff;
-        font-size: 17px;
-        letter-spacing: 0.2px;
-        font-family: "Roboto";
-    }
-    .btn-text-login {
-        float: center;
-        margin: 18px 18px 0 0;
-        color: #4285f4;
-        font-size: 17px;
-        letter-spacing: 0.2px;
-        font-family: "Roboto";
-    }
-    .google-btn:hover {
-        box-shadow: 0 0 6px #4285f4;
-    }
-    .google-btn:active {
-        background: #1669F2;
-    }
-    .google-btn-login:hover {
-        box-shadow: 0 0 6px #4285f4;
-    }
-    .google-btn-login:active {
-        background: #1669F2;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+  .google-btn {
+  width: 500px;
+  height: 60px;
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  font-size:20px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+}
+.btn-7 {
+background: #fff;
+  line-height: 60px;
+  padding: 0;
+  border: none;
+}
+.btn-7 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-7:before,
+.btn-7:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: rgb(253, 253, 253);
+  box-shadow:
+   -7px -7px 20px 0px rgba(255,255,255,.9),
+   -4px -4px 5px 0px rgba(255,255,255,.9),
+   7px 7px 20px 0px rgba(0,0,0,.2),
+   4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7:before{
+   height: 0%;
+   width: 2px;
+}
+.btn-7:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-7:hover{
+  color: rgb(255, 255, 255);
+  background: transparent;
+}
+.btn-7:hover:before {
+  height: 100%;
+}
+.btn-7:hover:after {
+  width: 100%;
+}
+.btn-7 span:before,
+.btn-7 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: rgb(255, 255, 255);
+  box-shadow:
+   -7px -7px 20px 0px rgba(255,255,255,.9),
+   -4px -4px 5px 0px rgba(255,255,255,.9),
+   7px 7px 20px 0px rgba(0,0,0,.2),
+   4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-7 span:after {
+  height: 2px;
+  width: 0%;
+}
+.btn-7 span:hover:before {
+  height: 100%;
+}
+.btn-7 span:hover:after {
+  width: 100%;
+}
 
-    /*
+
+ 
+
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Nanum Gothic Coding', monospace;
+  overflow: hidden;
+  
+}
+
+.section .container {
+  padding: 30px 0 30px 0;
+  
+}
+
+
+/*
   Slider
 */
 
-.section .slider,
-.section .footer {
-  background: rgb(117, 150, 241);
+.section .slider {
+  background: rgb(34, 40, 49);
 }
 
 .slidercontent {
@@ -147,7 +183,6 @@
 
 
 .hero {
-  font-family: 'Roboto Slab', sans-serif;
   color: white;
   font-weight: normal;
   letter-spacing: 1px;
@@ -202,10 +237,7 @@ h1.hero:after {
   position: relative;
 }
 
-.col.four {
-  width: 23%;
-  margin: 0 1%;
-}
+
 
 .col.three {
   width: 31.3%;
@@ -216,11 +248,16 @@ h1.hero:after {
   width: 40%;
   margin: 0 2.5%;
   padding: 0 2.5%;
+  background: rgba(221,221,221);
+  border-radius: 10px;
+  box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
+
 }
 
 .col.extrapad {
   padding-top: 20px;
   padding-bottom: 20px;
+   color: rgba(255, 255, 255, 0.771);
 }
 .col.five {
   width: 2424%;
@@ -231,15 +268,15 @@ h1.hero:after {
 .col .service,
 .col .feature {
   font-size: 21px;
-  font-weight: 300;
-  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 700;
+  
 }
 
 .col .service:after {
   content: "";
   width: 50px;
   position: relative;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgb(0, 0, 0);
   display: block;
   text-align: center;
   margin: auto;
@@ -271,20 +308,14 @@ h1.hero:after {
   position: absolute;
   padding: 0;
   margin: 0;
-  top: -15px;
+  top: -11px;
   height: 50px;
   width: 50px;
 }
 
-.col:hover > .icon {
-  background: #F44336;
-  color: white;
-}
 
-.col:hover > .icon.side {
-  background: initial;
-  color: initial;
-}
+
+
 
 .responsivegroup {
   display: none;
@@ -295,7 +326,7 @@ h1.hero:after {
 
 .col p,
 .col h1 {
-  padding: 0 1%;
+  padding: 0 0%;
   text-align: center;
 }
 
@@ -305,7 +336,8 @@ h1.hero:after {
 
 
 .col.bg {
-  background: rgb(231, 234, 255);
+  background-image: linear-gradient(to bottom right, #2252b1, #dc4225);
+  border-radius: 10px;
 }
 
 .col.pointer {
@@ -313,7 +345,8 @@ h1.hero:after {
 }
 
 .col span.feature {
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 400;
 }
 /*
   Text
@@ -336,7 +369,6 @@ h1.hero:after {
 }
 
 h2 {
-  font-family: 'Roboto Slab', sans-serif;
   text-align: center;
   font-weight: 400;
   font-size: 18px;
@@ -374,10 +406,19 @@ h2 {
   display: table;
   clear: both;
 }
+/*
+  반응형
+*/
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 @media all and (max-width: 768px) {
   .container {
-    width: 95%;
+    width: 100%;
   }
   .col.four {
     width: 48%;
@@ -424,19 +465,19 @@ h2 {
 
 @media all and (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 100%;
   }
 }
 
 @media all and (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 100%;
   }
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 1100px) {
   .container {
-    width: 1170px;
+    width: 100%;
   }
 }
 

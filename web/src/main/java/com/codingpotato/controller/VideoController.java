@@ -45,9 +45,7 @@ public class VideoController {
 
         File dir = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\mosaic\\user\\"+userEmail+"\\video");
         String[] filenames = dir.list((f,name)->name.endsWith(".mp4"));
-        for (int i = 0; i < filenames.length; i++) {
-            System.out.println("file: " + filenames[i]);
-        }
+
         return filenames;
     }
 

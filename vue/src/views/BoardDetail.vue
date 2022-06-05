@@ -1,62 +1,57 @@
 <template>
-<div>
-    <div class="bdlist">
-		<div class="AddWrap">
-			<form>
-				<table class="tbAdd">
-					<colgroup>
-						<col width="15%" />
-						<col width="*" />
-					</colgroup>
-                <thead>
-                    <tr>
-                        <th>순서</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>생성일</th>
-                        <th>수정일</th>
-                    </tr>
-                </thead>
+<table class="info">
+  <colgroup>
+    <col class="title">
+    <col class="creater">
+    <col class="createDate">
+    <col class="modifiedDate">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>생성일</th>
+      <th>수정일</th>
+    </tr>
+  </thead>
+  <tbody>
+        <td>{{datas.title}}</td>
+        <td>운영자</td>
+        <td>{{datas.createdDate}}</td>
+        <td>{{datas.modifiedDate}}</td>
+  </tbody>
+</table>
+  <table class="infotwo">
+    <thead class="contents">
+        <tr>
+          <th class="contents">내용</th>
+        </tr>
+    </thead>
+      <tbody>
+        <td>{{datas.content}}</td>
+      </tbody>
+</table>	
+<div class="back">
+    <button class="backbtn btn-2" @click="moveBoardList()">목록으로 돌아가기</button>	
+</div>
 
-                <tbody>
-                        <td>{{datas.id}}</td>
-                        <td>{{datas.title}}</td>
-                        <td>운영자</td>
-                        <td>{{datas.createdDate}}</td>
-                        <td>{{datas.modifiedDate}}</td>
-                </tbody>
-                <thead>
-                    <tr>
-                        <th>내용</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        <td>{{datas.content}}</td>
-                </tbody>
-				</table>
-			</form>
-		</div>	
-        <div class="btnWrap">
-			<a href="/" class="btn">목록</a>
-		</div>	
-	</div>
 
  <div class="section">
         <div class="container">
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+                <h1 class="service">자동 모자이크 서비스</h1>
+                <p>간편한 자동 모자이크 서비스로 일찍 퇴근 완료!</p>
             </div>
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">설명</h1>
-                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+                <h1 class="service">서버 기반 서비스</h1>
+                <p>느릿느릿한 컴퓨터로 편집은 이제 그만!</p>
             </div>
             <div class="group"></div>
         </div>
     </div>
-</div>
+
 </template>
 
 <script>
@@ -75,8 +70,8 @@ export default {
             const headers = {
                 'Authorization': 'Bearer '+Token
             }
-            console.log(Token)
-            const url = 'http://localhost:8080/board/read?id=1';
+            console.log(this.$route.params.id)
+            const url = 'http://localhost:8080/board/read?id='+this.$route.params.id;
             this.axios({
                 method: 'get',
                 url: url,
@@ -89,8 +84,8 @@ export default {
                 console.log('err',err);
             })
         },
-        move(){
-            location.href = "/";
+        moveBoardList(){
+            location.href = "/BoardList";
         }
     },
   
@@ -98,33 +93,114 @@ export default {
 </script>
 
 <style>
-h1 {
-    align-items: center;
-
+/* 테이블 색상 (중요하지 않음) */
+.info {
+  width: 80%;
+  margin: 40px auto 0px;
+  border-collapse: collapse;
 }
-.bdlist {
-    align-items: center;
+.infotwo{
+  width: 80%;
+  margin: 0px auto 0px;
+  border-collapse: collapse;
 }
-.tbAdd{
-    border-top:1px solid #888;
-    width:1000px;
-
+th {
+  background: rgb(34, 40, 49);
+  color: #fff;
 }
-.tbAdd th, .tbAdd td{border-bottom:1px solid #eee; padding:5px 0; }
-.tbAdd td{padding:10px 10px; box-sizing:border-box; text-align:center;}
-.tbAdd td.txt_cont{height:300px; vertical-align:top;}
-.btnWrap{text-align:center; margin:20px 0 0 0;}
-.btnWrap a{margin:0 20px;}
-.btnAdd {background:#43b984}
-.btnDelete{background:#f00;}
+td, th {
+  border: 1px solid #dbdbdb;
+  padding: 5px 20px;
+  font-size:16px;
+  text-align: center;
+}
+tr:nth-of-type(odd) { 
+	background: #eee; 
+}
 
+
+/* 컬럼의 너비 */
+.title {width: 43%;}
+.creater {width: 20%;}
+.createdate {width: 5%;}
+.modifieddate {width: 5%;}
+
+
+/* 컬럼의 정렬 */
+tr td:nth-child(1){text-align:center;}
+tr td:nth-child(2){text-align:center;}
+tr td:nth-child(3){text-align:center;}
+tr td:nth-child(4){text-align:center;}
+
+/*목록 버튼*/
+.back {
+  text-align: center;
+  margin: 40px;
+}
+.backbtn {
+  width: 200px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-2 {
+  background: rgb(34, 40, 49);
+  background: linear-gradient(0deg, rgb(34, 40, 49)) 0%, rgb(34, 40, 49) 100%;
+  border: none;
+  
+}
+.btn-2:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-2:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Nanum Gothic Coding', monospace;
+  overflow: hidden;
+  padding:30px 0 30px 0;
+  
+}
+
+.section .containertwo {
+  padding: 30px 0 30px 0;
+  background:rgba(236, 235, 235, 0.564)
+  
+  
+}
+
+.section.bg {
+  background: rgb(255, 255, 255)
+  
+}
 /*
   Slider
 */
 
-.section .slider,
-.section .footer {
-  background: rgb(117, 150, 241);
+.section .slider {
+  background: rgb(34, 40, 49);
 }
 
 .slidercontent {
@@ -133,7 +209,6 @@ h1 {
 
 
 .hero {
-  font-family: 'Roboto Slab', sans-serif;
   color: white;
   font-weight: normal;
   letter-spacing: 1px;
@@ -188,10 +263,7 @@ h1.hero:after {
   position: relative;
 }
 
-.col.four {
-  width: 23%;
-  margin: 0 1%;
-}
+
 
 .col.three {
   width: 31.3%;
@@ -202,11 +274,16 @@ h1.hero:after {
   width: 40%;
   margin: 0 2.5%;
   padding: 0 2.5%;
+  background: rgb(221, 221, 221);
+  border-radius: 10px;
+  box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
+
 }
 
 .col.extrapad {
   padding-top: 20px;
   padding-bottom: 20px;
+   color: rgba(255, 255, 255, 0.771);
 }
 .col.five {
   width: 2424%;
@@ -217,15 +294,16 @@ h1.hero:after {
 .col .service,
 .col .feature {
   font-size: 21px;
-  font-weight: 300;
-  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 700;
+  color:#000; 
+  
 }
 
 .col .service:after {
   content: "";
   width: 50px;
   position: relative;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgb(0, 0, 0);
   display: block;
   text-align: center;
   margin: auto;
@@ -241,6 +319,7 @@ h1.hero:after {
 .col span.side:first-of-type {
   margin-left: 50px;
   text-align: left;
+  color:#000;
 }
 
 .col .icon {
@@ -257,20 +336,14 @@ h1.hero:after {
   position: absolute;
   padding: 0;
   margin: 0;
-  top: -15px;
+  top: -11px;
   height: 50px;
   width: 50px;
 }
 
-.col:hover > .icon {
-  background: #F44336;
-  color: white;
-}
 
-.col:hover > .icon.side {
-  background: initial;
-  color: initial;
-}
+
+
 
 .responsivegroup {
   display: none;
@@ -281,7 +354,7 @@ h1.hero:after {
 
 .col p,
 .col h1 {
-  padding: 0 1%;
+  padding: 0 0%;
   text-align: center;
 }
 
@@ -291,7 +364,8 @@ h1.hero:after {
 
 
 .col.bg {
-  background: rgb(231, 234, 255);
+  background-image: rgb(221, 221, 221);
+  border-radius: 10px;
 }
 
 .col.pointer {
@@ -299,7 +373,8 @@ h1.hero:after {
 }
 
 .col span.feature {
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 400;
 }
 /*
   Text
@@ -322,7 +397,6 @@ h1.hero:after {
 }
 
 h2 {
-  font-family: 'Roboto Slab', sans-serif;
   text-align: center;
   font-weight: 400;
   font-size: 18px;
@@ -352,7 +426,7 @@ h2 {
   color: #fff;
 }
 /*
-  반응형
+  Responsive
 */
 
 .group:after {
@@ -360,7 +434,6 @@ h2 {
   display: table;
   clear: both;
 }
-
 @media all and (max-width: 768px) {
   .container {
     width: 95%;

@@ -1,22 +1,16 @@
 <template>
-	<div class="hold">
-    <div class="header">
-      <ul class="navlg" @click="moveHome()">
-         <li><a>MOSAIC WEB</a></li>
-        </ul>
-          <ul class="nav">
-            <div v-if="!this.$store.getters['token/getIsLogin']" class="headerItem" >
-            <li><a href="/Login">로그인</a></li>
-            </div>
-            <div v-else class="headerItem" @click="handleLogout">
-              <li><a class="">로그아웃</a></li>
-            </div>
-            <div class="headerItem">
-            <li><a href="/BoardList">공지사항</a></li>
-            </div>
-          </ul>
-      </div>
-  </div>
+<div class="hold">
+  <header class="header">
+  <a href="/" class="logo">MOSAIC WEB</a>
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+      <li class="headerItem"><a href="/BoardList">FAQ</a></li>
+      <li v-if="!this.$store.getters['token/getIsLogin']" class="headerItem"><a href="/Login">로그인</a></li>
+      <li v-else class="headerItem" @click="handleLogout()"><a class="">로그아웃</a></li>
+  </ul>
+</header>
+</div>
 </template>
 
 <script>
@@ -38,233 +32,167 @@ export default {
       moveHome() {
       this.$router.push('/');
       document.getElementsByClassName("detail-menu")[0].style.display = 'none';
-    }
+    },
+      moveLogin() {
+      this.$router.push('/Login');
+      document.getElementsByClassName("detail-menu")[0].style.display = 'none';
+    },
+      moveBoardList() {
+      this.$router.push('/BoardList');
+      document.getElementsByClassName("detail-menu")[0].style.display = 'none';
+    },
+
   },
 }
 </script>
 
 <style>
-div.headerItem {
-  float: right;
-}
- 
-
-ul.navlg {
-  float: left;
-    list-style: none;
-    margin: 0;
-    padding: 5;
-
-}
-
-a {
-  text-decoration: none;
-  cursor: pointer;
-  color: #444;
-  font-size: 24px;
-  font-weight: 350;
-  font-family: 'Roboto Slab', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+.hold {
+  height: 60px;
 }
 body {
   margin: 0;
-  padding: 0;
+  font-family: Helvetica, sans-serif;
+  background-color: #f4f4f4;
 }
 
-.fw {
-  text-decoration: none;
-  color:white;
-  cursor:pointer;
+a {
+    font-family: 'Quicksand', sans-serif;
+  color: #000;
 }
 
-.fg {
-  text-decoration: none;
-  color:white;
-  cursor:pointer;
-}
-.section {
-  width: 100%;
-}
-
-.container {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  color: #444;
-  font-size: 14px;
-  font-weight: 300;
-  font-family: Roboto, 'Open Sans', Arial, sans-serif;
-  overflow: hidden;
-}
-
-.section .container {
-  padding: 10px 0 10px 0;
-}
-
-.section.bg {
-  background: #c5d3fc;
-}
-/*
-  Header
-*/
-
-.hold {
-  height: 80px;
-}
+/* header */
 
 .header {
-  line-height: 77px;
-  width: 100%;
-  transition: line-height 0.2s linear, box-shadow 0.2s linear;
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  background: rgba(245, 245, 245, 0.97);
+  width: 100%;
+  z-index: 3;
 }
 
-.header.small {
-  line-height: 50px;
-  box-shadow: 0px 1px 3px 0px rgba(50, 50, 50, 0.8);
-}
-
-.header.small > .container > #logo {
-  height: 30px;
-}
-
-.logo {
-  position: absolute;
-  top: 30%;
-  text-decoration: none;
-  transform: translateY(-50%);
-  float: left;
-  height: 40px;
-  width: 170px;
-  margin-left: 20px;
-}
-
-ul.nav {
-  float: right;
-  list-style: none;
+.header ul {
   margin: 0;
-  padding: 5;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
 }
 
-ul.nav li {
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: #f4f4f4;
+}
+
+.header .logo {
+  display: block;
   float: left;
-  position: relative;
+  font-size: 1.8em;
+  padding: 10px 20px;
+  text-decoration: none;
 }
 
-ul.nav li a {
-  transition: color 0.2s linear;
-  font-size: 18px;
-}
+/* menu */
 
-ul.nav li:hover a {
-  color: rgb(51, 124, 252);
-}
-
-ul.nav li a {
-  padding: 21px;
-  color: initial;
-  text-decoration: initial;
-}
-
-/*
-  Responsive
-*/
-
-.group:after {
-  content: "";
-  display: table;
+.header .menu {
   clear: both;
+  max-height: 0;
+  transition: max-height.2s ease-out;
 }
 
-@media all and (max-width: 768px) {
-  
-  .container {
-    width: 95%;
-  }
-  .col.four {
-    width: 48%;
-    margin: 1%;
-  }
-  .col.three {
-    display: block;
-    width: 95%;
-    padding: 0;
-    margin: 0 auto;
-    float: none;
-  }
-  .header {
-    height: auto;
-    background: #eee;
-  }
-  #logo {
-    position: initial;
-    float: none;
-    display: block;
-    transform: none;
-    margin: 10px auto 0 auto;
-    text-decoration: none;
-  }
-  ul.nav {
-    float: none;
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-  }
-  ul.nav li {
-   
-    display: inline-block;
-  }
-  .responsivegroup {
-    display: block;
-  }
-  .responsivegroup:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  
-  
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
 }
 
-@media all and (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
 }
 
-
-@media all and (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
 }
 
-@media all and (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
+.header .menu-icon .navicon:before {
+  top: 5px;
 }
 
-@media all and (max-width:450px) {
-  .col, .col.four, .col.three, .col.two {
-    display: block;
-    width: 95%;
-    padding: 0;
-    margin: 0 auto;
-    float: none;
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
   }
-  .col.extrapad {
-    padding: 1%;
-    margin-bottom: 10px;
+  .header li a {
+    padding: 20px 30px;
   }
-  .group {
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
     display: none;
   }
 }
+
+
+
 </style>

@@ -2,6 +2,7 @@
 <div>
 </div>
 </template>
+
 <script>
 // import { onMounted } from '@vue/runtime-core'
 // import useRoute from 'vue-router'
@@ -104,7 +105,6 @@ export default {
 
 
 .hero {
-  font-family: 'Roboto Slab', sans-serif;
   color: white;
   font-weight: normal;
   letter-spacing: 1px;
@@ -189,7 +189,6 @@ h1.hero:after {
 .col .feature {
   font-size: 21px;
   font-weight: 300;
-  font-family: 'Roboto Slab', sans-serif;
 }
 
 .col .service:after {
@@ -293,7 +292,7 @@ h1.hero:after {
 }
 
 h2 {
-  font-family: 'Roboto Slab', sans-serif;
+
   text-align: center;
   font-weight: 400;
   font-size: 18px;

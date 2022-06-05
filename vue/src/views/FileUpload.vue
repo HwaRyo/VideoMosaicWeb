@@ -1,77 +1,59 @@
 <template>
-<div class="container">
+<div class="uploadzone">
   <div class="dan-up-vid">
+<!--모자이크 할 영상 업로드 존-->
     <div class="dan-video">
-    <input
-      class="dan-up-vid-input"
-      type="file"
-      name="dan-up-vid-input"
-      @change="onChangevid"
-      accept="video/mp4,video/mkv,"
-    />
-    <div v-show="files.length === 0" class="dan-up-vid-body">
-      <div class="dan-up-vid-image">
-        <img width="200" height="200" src="../assets/video.png" />
-      </div>
-      <p class="dan-up-vid-sub-text">영상을 여기에 끌어다 놓으세요!</p>
-    </div>
-    <div v-show="files.length > 0" class="dan-up-vid-back-body">
-      <div
-        class="dan-up-vid-file-name"
-        :key="index"
-        v-for="(fil, index) in files"
-      >
-        <img width="30" :src="fil.img" />
-        {{ limitStr(fil.file.name, 15) }}
-        <button
-          class="dan-up-vid-button"
-          :id="fil.id"
-          @click="eliminatevid(fil.id)"
-        >
-          x
-        </button>
+      <input class="dan-up-vid-input" type="file" name="dan-up-vid-input" @change="onChangevid" accept="video/mp4,video/mkv,"/>
+        <div v-show="files.length === 0" class="dan-up-vid-body">
+          <div class="dan-up-vid-image">
+            <img width="200" height="200" src="../assets/video.png" />
+          </div>
+          <p class="dan-up-vid-sub-text">영상을 여기에 끌어다 놓으세요!</p>
+        </div>
+      <div v-show="files.length > 0" class="dan-up-vid-back-body">
+        <div class="dan-up-vid-file-name" :key="index" v-for="(fil, index) in files">
+          {{ limitStr(fil.file.name, 30) }}
+          <button class="dan-up-vid-button" :id="fil.id" @click="eliminatevid(fil.id)">
+            x
+          </button>
+        </div>
       </div>
     </div>
-    </div>
+    <!--업로드 버튼-->
+  <div class="dan-uploadbtn">
+    <button class="uploadbtn" v-on:click="upload()">
+      <svg width="110.687px" height="90px" viewBox="-352.439 -334.975 110.687 90">
+        <path id="shape" class="cloud" fill="none" stroke="rgba(191,191,191,1)" stroke-width="5" stroke-miterlimit="10" d="M-326.444-305.524
+        c-12.976,0-23.495,10.529-23.495,23.504c0,12.976,10.519,23.495,23.495,23.495h45.217c20.421,0,36.975-16.554,36.975-36.975
+        s-16.554-36.975-36.975-36.975c-16.942,0-31.213,11.408-35.586,26.951H-326.444z"/>
+        <path class="cloud loader" fill="none" stroke="rgba(191,191,191,1)" stroke-width="5" stroke-miterlimit="10" d="M-326.444-305.524
+        c-12.976,0-23.495,10.529-23.495,23.504c0,12.976,10.519,23.495,23.495,23.495h45.217c20.421,0,36.975-16.554,36.975-36.975
+        s-16.554-36.975-36.975-36.975c-16.942,0-31.213,11.408-35.586,26.951H-326.444z"/>
+      </svg>
+      <p class="upload">업로드</p>
+    </button>
+  </div>
 <!--얼굴 업로드 동영상 첨부 존-->
     <div class="dan-facevideo">
-    <input
-      class="dan-up-vid-input"
-      type="file"
-      name="dan-up-vid-inputt"
-      @change="onChangevid"
-      accept="video/mp4,video/mkv,"
-    />
-    <div v-show="files.length === 0" class="dan-up-vid-body">
-      <div class="dan-up-vid-image">
-        <img width="200" src="../assets/video.png" />
+      <input class="dan-up-vid-input" type="file" name="dan-up-vid-input" @change="onChangevid" accept="video/mp4,video/mkv,"/>
+        <div v-show="files.length === 0" class="dan-up-vid-body">
+          <div class="dan-up-vid-image">
+            <img width="200" src="../assets/video.png" />
+          </div>
+          <p class="dan-up-vid-sub-text">영상을 이곳에 끌어다 놓으세요!</p>
+        </div>
+      <div v-show="files.length > 0" class="dan-up-vid-back-body">
+        <div class="dan-up-vid-file-name" :key="index" v-for="(fil, index) in files">
+          {{ limitStr(fil.file.name, 30) }}
+          <button class="dan-up-vid-button" :id="fil.id" @click="eliminatevid(fil.id)">
+            x
+          </button>
+        </div>
       </div>
-      <p class="dan-up-vid-sub-text">영상을 이곳에 끌어다 놓으세요!</p>
-      
-    </div>
-    <div v-show="files.length > 0" class="dan-up-vid-back-body">
-      <div
-        class="dan-up-vid-file-name"
-        :key="index"
-        v-for="(fil, index) in files"
-      >
-        <img width="30" :src="fil.img" />
-        {{ limitStr(fil.file.name, 15) }}
-        <button
-          class="dan-up-vid-button"
-          :id="fil.id"
-          @click="eliminatevid(fil.id)"
-        >
-          x
-        </button>
-      </div>
-    </div>
     </div>
   </div>
 </div>
-<div>
-  <button v-on:click="upload()">업로드</button>
-</div>
+
 
 <div class="section bg">
         <div class="container">
@@ -84,7 +66,7 @@
             <div class="col two bg margin extrapad">
                 <h1 class="icon side">2</h1>
                 <span class="feature side">본인 얼굴 동영상 업로드</span>
-                <p class="side">유일하게 모자이크 처리 되지 않을 본인의 얼굴이 확실히 나오는 동영상을 첨부해주세요.</p>
+                <p class="side">본인의 얼굴이 확실히 나오는 동영상을 첨부해주세요.</p>
             </div>
             <div class="group margin"></div>
             <div class="col two bg margin extrapad">
@@ -95,7 +77,7 @@
             <div class="col two bg margin extrapad">
                 <h1 class="icon side">4</h1>
                 <span class="feature side">다운로드</span>
-                <p class="side">모자이크가 완료된 영상을 다운로드 받기 위해 창을 홈으로 이동해주세요.</p>
+                <p class="side">모자이크가 완료된 영상을 다운로드 받기 위해 홈으로 이동해주세요.</p>
             </div>
             <div class="group"></div>
         </div>
@@ -105,6 +87,7 @@
 </template>
 
 <script>
+
 export default {
   name: "DanUpvid",
   data() {
@@ -126,6 +109,7 @@ export default {
       type: Array,
       default: () => [],
       required: false,
+      
     },
   },
   methods: {
@@ -142,10 +126,12 @@ export default {
       console.log("new", newFiles);
       this.files = newFiles;
     },
+   
     onChangevid(e) {
       let dataImg = null;
       for (let i = 0; i < e.target.files.length; i++) {
-        this.file = e.target.files[i];
+        this.file = e.target.files[0];
+        e.target.value = '';
         dataImg = URL.createObjectURL(this.file);
         this.files.push({ id: i, file: this.file, img: dataImg });
       }
@@ -194,10 +180,36 @@ export default {
 </script>
 
 <style>
+.hold {
+  height: 60px;
+
+  
+}
+
+.dan-uploadbtn {
+  border: 3px dashed #000;
+  background:rgba(255, 255, 255, 0.822)
+}
+
+.dan-uploadbtn:hover {
+  transition: background 0.5s;
+  background: rgba(0, 0, 0, 0.822);
+}
+
+.dan-video {
+  width: 50%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.5s;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background:rgba(135, 135, 135, 0.822);
+}
 
 .dan-facevideo {
- border-radius: 15px;
-  border: 3px dashed lightblue;
   width: 50%;
   height: 250px;
   display: flex;
@@ -207,37 +219,23 @@ export default {
   transition: background 0.8s;
   cursor: pointer;
   position: relative;
-  background: rgb(173, 216, 230, 0.2);
+  background:rgba(135, 135, 135, 0.822)
 }
 
-
-.dan-video {
- border-radius: 15px;
-  border: 3px dashed lightblue;
-  width: 100%;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.8s;
-  cursor: pointer;
-  position: relative;
-  background: rgb(173, 216, 230, 0.2);
-}
 .dan-up-vid {
   display: flex;
+  width:100%;
+  height:50%;
+  
 }
 .dan-up-vid-body{
   align-items: center;
 }
 .dan-facevideo:hover {
-  transition: background 0.1s;
-  background: rgb(173, 216, 230, 0.5);
+  opacity: 1;
 }
 .dan-video:hover {
-  transition: background 0.1s;
-  background: rgb(173, 216, 230, 0.5);
+  opacity: 1
 }
 .dan-up-vid-input {
   cursor: pointer;
@@ -245,7 +243,6 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 1;
-  /*Opacity settings for all browsers*/
   opacity: 0;
   -moz-opacity: 0;
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
@@ -270,7 +267,7 @@ export default {
 }
 
 .dan-up-vid-back-body {
-  display: flex;
+   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
@@ -281,13 +278,46 @@ export default {
   margin-top: 10px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+.uploadzone {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Nanum Gothic Coding', monospace;
+  overflow: hidden;
+  
+}
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Nanum Gothic Coding', monospace;
+  overflow: hidden;
+  padding:30px 0 30px 0;
+  
+}
+
+.section .containertwo {
+  padding: 30px 0 30px 0;
+  background:rgba(236, 235, 235, 0.564)
+  
+  
+}
+
+.section.bg {
+  background: rgb(255, 255, 255)
+  
+}
 /*
   Slider
 */
 
-.section .slider,
-.section .footer {
-  background: rgb(117, 150, 241);
+.section .slider {
+  background: rgb(34, 40, 49);
 }
 
 .slidercontent {
@@ -296,7 +326,6 @@ export default {
 
 
 .hero {
-  font-family: 'Roboto Slab', sans-serif;
   color: white;
   font-weight: normal;
   letter-spacing: 1px;
@@ -351,10 +380,7 @@ h1.hero:after {
   position: relative;
 }
 
-.col.four {
-  width: 23%;
-  margin: 0 1%;
-}
+
 
 .col.three {
   width: 31.3%;
@@ -365,11 +391,16 @@ h1.hero:after {
   width: 40%;
   margin: 0 2.5%;
   padding: 0 2.5%;
+  background: rgb(221, 221, 221);
+  border-radius: 10px;
+  box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
+
 }
 
 .col.extrapad {
   padding-top: 20px;
   padding-bottom: 20px;
+   color: rgba(255, 255, 255, 0.771);
 }
 .col.five {
   width: 2424%;
@@ -380,8 +411,9 @@ h1.hero:after {
 .col .service,
 .col .feature {
   font-size: 21px;
-  font-weight: 400;
-  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 700;
+  color:rgb(255, 255, 255); 
+  
 }
 
 .col .service:after {
@@ -404,6 +436,7 @@ h1.hero:after {
 .col span.side:first-of-type {
   margin-left: 50px;
   text-align: left;
+  color:#000;
 }
 
 .col .icon {
@@ -420,20 +453,14 @@ h1.hero:after {
   position: absolute;
   padding: 0;
   margin: 0;
-  top: -10px;
+  top: -11px;
   height: 50px;
   width: 50px;
 }
 
-.col:hover > .icon {
-  background: #F44336;
-  color: white;
-}
 
-.col:hover > .icon.side {
-  background: initial;
-  color: initial;
-}
+
+
 
 .responsivegroup {
   display: none;
@@ -454,7 +481,8 @@ h1.hero:after {
 
 
 .col.bg {
-  background: rgb(231, 234, 255);
+  background-image: rgb(221, 221, 221);
+  border-radius: 10px;
 }
 
 .col.pointer {
@@ -462,7 +490,8 @@ h1.hero:after {
 }
 
 .col span.feature {
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 400;
 }
 /*
   Text
@@ -485,7 +514,6 @@ h1.hero:after {
 }
 
 h2 {
-  font-family: 'Roboto Slab', sans-serif;
   text-align: center;
   font-weight: 400;
   font-size: 18px;
@@ -605,6 +633,60 @@ h2 {
     display: none;
   }
 }
+
+
+/*업로드 버튼*/
+
+body button {
+  margin: 0 auto;
+  position: relative;
+  transform: translateY(-50%);
+  top: 50%;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+body button p {
+  color: #bfbfbf;
+  font-family: "PT Sans", sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-indent: 4px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 20px;
+  margin-top: 5px;
+}
+body button:focus {
+  outline: 0;
+}
+
+body button .loader {
+  stroke: #ffffff;
+  opacity: 0;
+  stroke-DashArray: 232;
+  transition: opacity 0s;
+}
+body button .complete {
+  opacity: 0;
+}
+body button #shape, body button .arrow line, body button p {
+  transition: color 0.3s,  stroke 0.3s,  letter-spacing 0.3s, font-size 0.3s, text-indent 0.3s;
+}
+
+
+body button:hover #shape {
+  stroke: #ffffff;
+  transition: stroke 0.3s;
+}
+body button:hover p{
+  letter-spacing: 6px;
+  color: #ffffff;
+  font-size: 19px;
+  text-indent: 6px;
+}
+
 </style>
 
   
