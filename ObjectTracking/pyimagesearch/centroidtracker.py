@@ -28,7 +28,7 @@ class centroidTracker():
 
 			return self.objects
 
-		inputCentroids = np.zeros((len(rects), 2), dtype="int")
+		inputCentroids = np.zeros((len(rects), 4), dtype="int")
 
 		for (i, (startX, startY, endX, endY)) in enumerate(rects):
 			inputCentroids[i] = (startX, startY, endX, endY)

@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
 <div class="section">
     <div class="slider">
       <div class="container slidercontent">
@@ -9,9 +8,6 @@
       </div>
     </div>     
   </div>
-=======
-<button v-on:click="insert()">등록</button>
->>>>>>> YH
   <table>
   <colgroup>
     <col class="number">
@@ -24,46 +20,30 @@
     <tr>
       <th>No</th>
       <th>제목</th>
-      <th>작성자</th>
       <th>생성날짜</th>
       <th>수정날짜</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="content" @click="move(v.id)" v-for="(v, i) in datas" :key="this.pageNum + i">
+    <tr class="content" @click="move(v.id)" v-for="(v, i) in datas" :key="i">
       <td>{{i+1}}</td>
       <td>{{v.title}}</td>
-      <td>관리자</td>
       <td>{{v.createdDate}}</td>
       <td>{{v.modifiedDate}}</td>
     </tr>
   </tbody>
 </table>
-  <div class="btn-cover">
-      <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
-        이전
-      </button>
-      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
-      <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
-        다음
-      </button>
-  </div>
-
-
-
-
-
  <div class="section">
         <div class="container">
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">글 쓰기, 수정, 삭제 불가</h1>
-                <p>사용자분들은 오직 FAQ 글을 클릭하여 확인만 가능합니다.</p>
+                <h1 class="service">FAQ</h1>
+                <p>사용자분들이 자주 묻는 질문 모음입니다. </p>
             </div>
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">글은 관리자로부터</h1>
-                <p>글은 개발자들(관리자들)부터 작성됩니다. </p>
+                <h1 class="service">고객센터</h1>
+                <p>해결되지 않는 사항은 010-1234-5678로 연락바랍니다. </p>
             </div>
             <div class="group"></div>
         </div>
@@ -91,78 +71,36 @@ export default {
       default: 5
       }
     },
-  
     mounted(){
       this.index();
     },
     methods:{
-      nextPage () {
-      this.pageNum += 1;
-    },
-      prevPage () {
-      this.pageNum -= 1;
-    },
-         insert(){
-            const Token = localStorage.getItem('token');
-            const headers = {
-                'Authorization': 'Bearer '+Token
-            }
-            const url = 'http://localhost:8080/board/insert';
-            this.axios({
-                method: 'post',
-                url: url,
-                headers: headers,
-                data:{
-                    title:"asdasd",
-                    content:"asdasd"
-                }
-            })
-            .then(({data}) => {
-                console.log('axios get success', data);
-            }).catch((err) =>{
-                console.log('err',err);
-            })
-        },
-        index(){
-            const Token = localStorage.getItem('token');
-            const headers = {
-                'Authorization': 'Bearer '+Token
-            }
-            console.log(Token)
-            const url = 'http://localhost:8080/board/index';
-            this.axios({
-                method: 'get',
-                url: url,
-                headers: headers,
-            })
-            .then(({data}) => {
-                this.datas = data
-                console.log('axios get success', data);
-            }).catch((err) =>{
-                console.log('err',err);
-            })
-        },
-        move(x){
-         this.$router.push({
-            name: 'boarddetail',
-            params: { id: x }
+      index(){
+          const Token = localStorage.getItem('token');
+          const headers = {
+              'Authorization': 'Bearer '+Token
+          }
+          console.log(Token)
+          const url = 'http://localhost:8080/board/index';
+          this.axios({
+              method: 'get',
+              url: url,
+              headers: headers,
           })
-        }
-    },
-    computed: {
-    pageCount () {
-      let listLeng = this.datas.length,
-          listSize = this.pageSize,
-          page = Math.floor(listLeng / listSize);
-      if (listLeng % listSize > 0) page += 1;
-      return page;
-    },
-    paginatedData () {
-      const start = this.pageNum * this.pageSize,
-            end = start + this.pageSize;
-      return this.datas.slice(start, end);
+          .then(({data}) => {
+              this.datas = data
+              console.log('axios get success', data);
+          }).catch((err) =>{
+              console.log('err',err);
+          })
+      },
+      move(x){
+        this.$router.push({
+          name: 'boarddetail',
+          params: { id: x }
+        })
+      }
     }
-  }
  }
 
 </script>

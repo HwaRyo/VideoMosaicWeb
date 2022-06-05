@@ -2,15 +2,21 @@ package com.codingpotato.service;
 
 import com.codingpotato.DTO.BoardDTO;
 import com.codingpotato.model.Board;
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.io.*;
 import java.net.Socket;
+import java.net.URLEncoder;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 @Service
 public class VideoService {
@@ -18,19 +24,15 @@ public class VideoService {
     public void uploadVideo(MultipartFile video, MultipartFile face, String userEmail) throws Exception {
 
 
-        File file1 = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+".mp4");
+        File file1 = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+"_video.mp4");
         video.transferTo(file1);
 
-        File file2 = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+".mp4");
+        File file2 = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+"_face.mp4");
         face.transferTo(file2);
 
         String ip = "192.168.0.6";
         int port = 50001;
 
-<<<<<<< HEAD
-        String path2 = "C:\\Users\\leonilpark\\Documents\\Final_Project\\ObjectTracking\\videoData\\slice_test2_1.mp4";
-=======
->>>>>>> YH
         Socket socket = new Socket(ip, port);
         OutputStream os = socket.getOutputStream();
         FileInputStream fin1;
@@ -105,10 +107,6 @@ public class VideoService {
         os.write(byteArr);                   //데이터 전송횟수를 서버에 전송하고,
 
         System.out.println(is.read(buffer));
-<<<<<<< HEAD
-
-=======
->>>>>>> YH
 
         len = 0;
 
@@ -122,7 +120,32 @@ public class VideoService {
         System.out.println(is.read(buffer));
 
         socket.close();
+        os.flush();
+        fin1.close();
+        fin2.close();
         file1.delete();
         file2.delete();
+    }
+
+    public void downloadVideo(HttpServletResponse response, String userEmail, String fileName) throws Exception {
+
+        String path = "C:\\Users\\leonilpark\\Documents\\Final_Project\\mosaic\\user\\"+userEmail+"\\video\\"+fileName+".mp4";
+
+        byte[] fileByte = FileUtils.readFileToByteArray(new File(path));
+
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode(fileName, "UTF-8") + "\";");
+        response.setHeader("Content-Transfer-Encoding", "binary");
+
+        response.getOutputStream().write(fileByte);
+        response.getOutputStream().flush();
+        response.getOutputStream().close();
+    }
+
+    public String[] downloadList(String userEmail) throws Exception {
+        File dir = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\mosaic\\user\\"+userEmail+"\\video");
+        String[] fileNames = dir.list((f,name)->name.endsWith(".mp4"));
+
+        return fileNames;
     }
 }

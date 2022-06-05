@@ -41,33 +41,18 @@ public class VideoController {
         String reqToken = requestHeader.get("authorization").toString().replace("Bearer ", "");
         String userEmail = tokenProvider.getUserEmailFromToken(reqToken);
 
-        System.out.println(userEmail);
-
-        File dir = new File("C:\\Users\\leonilpark\\Documents\\Final_Project\\mosaic\\user\\"+userEmail+"\\video");
-        String[] filenames = dir.list((f,name)->name.endsWith(".mp4"));
-
-        return filenames;
+        String[] fileNames = videoService.downloadList(userEmail);
+        return fileNames;
     }
 
     @GetMapping("/download")
     public void download(@RequestHeader Map<String, Object> requestHeader,
                          HttpServletResponse response,
                          @RequestParam("fileName") String fileName) throws Exception {
-
         String reqToken = requestHeader.get("authorization").toString().replace("Bearer ", "");
         String userEmail = tokenProvider.getUserEmailFromToken(reqToken);
 
-        String path = "C:\\Users\\leonilpark\\Documents\\Final_Project\\mosaic\\user\\"+userEmail+"\\video\\"+fileName+".mp4";
-
-        byte[] fileByte = FileUtils.readFileToByteArray(new File(path));
-
-        response.setContentType("application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode(fileName, "UTF-8") + "\";");
-        response.setHeader("Content-Transfer-Encoding", "binary");
-
-        response.getOutputStream().write(fileByte);
-        response.getOutputStream().flush();
-        response.getOutputStream().close();
+        videoService.downloadVideo(response, userEmail, fileName);
     }
 
 
@@ -78,11 +63,6 @@ public class VideoController {
         String reqToken = requestHeader.get("authorization").toString().replace("Bearer ", "");
         String userEmail = tokenProvider.getUserEmailFromToken(reqToken);
 
-        File file1 = new File("D:\\Git\\VideoMosaicWeb\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+"1.mp4");
-        video.transferTo(file1);
-        File file2 = new File("D:\\Git\\VideoMosaicWeb\\web\\src\\main\\resources\\"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))+"2.mp4");
-        face.transferTo(file2);
-
-//        videoService.uploadVideo(video, face, userEmail);
+        videoService.uploadVideo(video, face, userEmail);
     }
 }

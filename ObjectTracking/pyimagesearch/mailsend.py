@@ -22,8 +22,6 @@ class mailSend:
         smtp.ehlo
         smtp.starttls()
 
-        print(self.projectEmail, self.projectPw)
-        print(type(self.projectEmail), type(self.projectPw))
         smtp.login(self.projectEmail, self.projectPw)
 
         smtp.sendmail(message['From'], message['To'].split(','), message.as_string())

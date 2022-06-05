@@ -1,5 +1,5 @@
 <template>
-<<<<<<< HEAD
+
 <table class="info">
   <colgroup>
     <col class="title">
@@ -17,7 +17,7 @@
   </thead>
   <tbody>
         <td>{{datas.title}}</td>
-        <td>운영자</td>
+        <td>관리자</td>
         <td>{{datas.createdDate}}</td>
         <td>{{datas.modifiedDate}}</td>
   </tbody>
@@ -36,59 +36,17 @@
     <button class="backbtn btn-2" @click="moveBoardList()">목록으로 돌아가기</button>	
 </div>
 
-=======
-<div>
-    <div class="bdlist">
-		<div class="AddWrap">
-			<form>
-				<table class="tbAdd">
-					<colgroup>
-						<col width="15%" />
-						<col width="*" />
-					</colgroup>
-                <thead>
-                    <tr>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>생성일</th>
-                        <th>수정일</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                        <td>{{datas.title}}</td>
-                        <td>관리자</td>
-                        <td>{{datas.createdDate}}</td>
-                        <td>{{datas.modifiedDate}}</td>
-                </tbody>
-                <thead>
-                    <tr>
-                        <th colspan="4">내용</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        <td colspan="4">{{datas.content}}</td>
-                </tbody>
-				</table>
-			</form>
-		</div>	
-        <div class="btnWrap">
-			<a href="/" class="btn">목록</a>
-		</div>	
-	</div>
->>>>>>> YH
-
  <div class="section">
         <div class="container">
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">자동 모자이크 서비스</h1>
-                <p>간편한 자동 모자이크 서비스로 일찍 퇴근 완료!</p>
+                <h1 class="service">FAQ</h1>
+                <p>사용자분들이 자주 묻는 질문 모음입니다. </p>
             </div>
             <div class="col two">
                 <h1 class="icon">[]</h1>
-                <h1 class="service">서버 기반 서비스</h1>
-                <p>느릿느릿한 컴퓨터로 편집은 이제 그만!</p>
+                <h1 class="service">고객센터</h1>
+                <p>해결되지 않는 사항은 010-1234-5678로 연락바랍니다. </p>
             </div>
             <div class="group"></div>
         </div>
