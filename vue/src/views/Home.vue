@@ -249,7 +249,14 @@ h1.hero:after {
   position: relative;
 }
 
+<<<<<<< HEAD
 
+=======
+.col.four {
+  width: 23%;
+  margin: 0 10%;
+}
+>>>>>>> YH
 
 .col.three {
   width: 31.3%;

@@ -3,17 +3,30 @@
   <div class="dan-up-vid">
 <!--모자이크 할 영상 업로드 존-->
     <div class="dan-video">
+<<<<<<< HEAD
       <input class="dan-up-vid-input" type="file" name="dan-up-vid-input" @change="onChangevid" accept="video/mp4,video/mkv,"/>
         <div v-show="files.length === 0" class="dan-up-vid-body">
+=======
+      <input class="dan-up-vid-input" type="file" name="dan-up-vid-input" @change="onChangevid1" accept="video/mp4,video/mkv,"/>
+        <div v-show="files1.length === 0" class="dan-up-vid-body">
+>>>>>>> YH
           <div class="dan-up-vid-image">
             <img width="200" height="200" src="../assets/video.png" />
           </div>
           <p class="dan-up-vid-sub-text">영상을 여기에 끌어다 놓으세요!</p>
         </div>
+<<<<<<< HEAD
       <div v-show="files.length > 0" class="dan-up-vid-back-body">
         <div class="dan-up-vid-file-name" :key="index" v-for="(fil, index) in files">
           {{ limitStr(fil.file.name, 30) }}
           <button class="dan-up-vid-button" :id="fil.id" @click="eliminatevid(fil.id)">
+=======
+      <div v-show="files1.length > 0" class="dan-up-vid-back-body">
+        <div class="dan-up-vid-file-name" :key="index" v-for="(fil, index) in files1">
+          <!--<img width="30" :src="fil.vid" />-->
+          {{ limitStr1(fil.file.name, 30) }}
+          <button class="dan-up-vid-button" :id="fil.id" @click="eliminatevid1(fil.id)">
+>>>>>>> YH
             x
           </button>
         </div>
@@ -23,6 +36,13 @@
   <div class="dan-uploadbtn">
     <button class="uploadbtn" v-on:click="upload()">
       <svg width="110.687px" height="90px" viewBox="-352.439 -334.975 110.687 90">
+<<<<<<< HEAD
+=======
+        <g class="arrow">
+          <line class="left" fill="none"  stroke-width="7" stroke-linecap="round" stroke-miterlimit="10" x1="-288.85" y1="-291.152" x2="-280.154" y2="-299.849"/>
+          <line class="right" fill="none"  stroke-width="7" stroke-linecap="round" stroke-miterlimit="10" x1="-280.154" y1="-299.849" x2="-271.457" y2="-291.152"/>
+        </g>
+>>>>>>> YH
         <path id="shape" class="cloud" fill="none" stroke="rgba(191,191,191,1)" stroke-width="5" stroke-miterlimit="10" d="M-326.444-305.524
         c-12.976,0-23.495,10.529-23.495,23.504c0,12.976,10.519,23.495,23.495,23.495h45.217c20.421,0,36.975-16.554,36.975-36.975
         s-16.554-36.975-36.975-36.975c-16.942,0-31.213,11.408-35.586,26.951H-326.444z"/>
@@ -30,22 +50,39 @@
         c-12.976,0-23.495,10.529-23.495,23.504c0,12.976,10.519,23.495,23.495,23.495h45.217c20.421,0,36.975-16.554,36.975-36.975
         s-16.554-36.975-36.975-36.975c-16.942,0-31.213,11.408-35.586,26.951H-326.444z"/>
       </svg>
+<<<<<<< HEAD
       <p class="upload">업로드</p>
+=======
+      <p>업로드</p>
+>>>>>>> YH
     </button>
   </div>
 <!--얼굴 업로드 동영상 첨부 존-->
     <div class="dan-facevideo">
+<<<<<<< HEAD
       <input class="dan-up-vid-input" type="file" name="dan-up-vid-input" @change="onChangevid" accept="video/mp4,video/mkv,"/>
         <div v-show="files.length === 0" class="dan-up-vid-body">
+=======
+      <input class="dan-up-vid-input" type="file" name="dan-up-vid-input" @change="onChangevid2" accept="video/mp4,video/mkv,"/>
+        <div v-show="files2.length === 0" class="dan-up-vid-body">
+>>>>>>> YH
           <div class="dan-up-vid-image">
             <img width="200" src="../assets/video.png" />
           </div>
           <p class="dan-up-vid-sub-text">영상을 이곳에 끌어다 놓으세요!</p>
         </div>
+<<<<<<< HEAD
       <div v-show="files.length > 0" class="dan-up-vid-back-body">
         <div class="dan-up-vid-file-name" :key="index" v-for="(fil, index) in files">
           {{ limitStr(fil.file.name, 30) }}
           <button class="dan-up-vid-button" :id="fil.id" @click="eliminatevid(fil.id)">
+=======
+      <div v-show="files2.length > 0" class="dan-up-vid-back-body">
+        <div class="dan-up-vid-file-name" :key="index" v-for="(fil, index) in files2">
+          <!-- <img width="30" :src="fil.img" /> -->
+          {{ limitStr2(fil.file.name, 30) }}
+          <button class="dan-up-vid-button" :id="fil.id" @click="eliminatevid2(fil.id)">
+>>>>>>> YH
             x
           </button>
         </div>
@@ -92,12 +129,20 @@ export default {
   name: "DanUpvid",
   data() {
     return {
-      file: null,
-      files: this.dataFile,
+      file1: null,
+      files1: this.dataFile1,
+      file2: null,
+      files2: this.dataFile2,
     };
   },
   watch: {
-    files(newF) {
+    files1(newF) {
+      if (newF.length === 0) {
+        this.$emit("up-show", false);
+        console.log("this, watch file void", newF);
+      }
+    },
+    files2(newF) {
       if (newF.length === 0) {
         this.$emit("up-show", false);
         console.log("this, watch file void", newF);
@@ -105,7 +150,12 @@ export default {
     },
   },
   props: {
-    dataFile: {
+    dataFile1: {
+      type: Array,
+      default: () => [],
+      required: false,
+    },
+    dataFile2: {
       type: Array,
       default: () => [],
       required: false,
@@ -113,19 +163,45 @@ export default {
     },
   },
   methods: {
-    elim() {
-      this.files = [];
-      this.file = null;
+    elim1() {
+      this.files1 = [];
+      this.file1 = null;
     },
-    eliminatevid(eliminate) {
-      let newFiles = this.files.filter((x) => {
+    elim2() {
+      this.files2 = [];
+      this.file2 = null;
+    },
+    eliminatevid1(eliminate) {
+      let newFiles = this.files1.filter((x) => {
         if (x.id !== eliminate) {
           return x;
         }
       });
       console.log("new", newFiles);
-      this.files = newFiles;
+      this.files1 = newFiles;
     },
+    eliminatevid2(eliminate) {
+      let newFiles = this.files2.filter((x) => {
+        if (x.id !== eliminate) {
+          return x;
+        }
+      });
+      console.log("new", newFiles);
+      this.files2 = newFiles;
+    },
+   
+    onChangevid1(e) {
+      let dataImg = null;
+      for (let i = 0; i < e.target.files.length; i++) {
+        this.file1 = e.target.files[0];
+        e.target.value = '';
+        dataImg = URL.createObjectURL(this.file1);
+        this.files1.push({ id: i, file: this.file1, img: dataImg });
+      }
+      console.log(this.files1);
+      this.$emit("file-up", this.files1);
+    },
+<<<<<<< HEAD
    
     onChangevid(e) {
       let dataImg = null;
@@ -134,11 +210,30 @@ export default {
         e.target.value = '';
         dataImg = URL.createObjectURL(this.file);
         this.files.push({ id: i, file: this.file, img: dataImg });
+=======
+    onChangevid2(e) {
+      let dataImg = null;
+      for (let i = 0; i < e.target.files.length; i++) {
+        this.file2 = e.target.files[0];
+        e.target.value = '';
+        dataImg = URL.createObjectURL(this.file2);
+        this.files2.push({ id: i, file: this.file2, img: dataImg });
+>>>>>>> YH
       }
-      console.log(this.files);
-      this.$emit("file-up", this.files);
+      console.log(this.files2);
+      this.$emit("file-up", this.files2);
     },
-    limitStr(string, limit) {
+
+    limitStr1(string, limit) {
+      let str = string;
+      this.$emit("up-show", true);
+      if (typeof str === "string" && str.length > limit) {
+        str = str.slice(0, limit) + "...";
+      }
+
+      return str;
+    },
+    limitStr2(string, limit) {
       let str = string;
       this.$emit("up-show", true);
       if (typeof str === "string" && str.length > limit) {
@@ -159,7 +254,8 @@ export default {
               console.log('url',url);
 
               var frm = new FormData();
-              frm.append("video", this.file);
+              frm.append("video", this.file1);
+              frm.append("face", this.file2);
 
               this.axios({
                 method: 'post',
@@ -180,6 +276,7 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
 .hold {
   height: 60px;
 
@@ -197,6 +294,16 @@ export default {
 }
 
 .dan-video {
+=======
+.dan-uploadbtn {
+  border-radius: 15px;
+  border: 3px dashed lightblue;
+      background: rgba(173, 196, 230, 0.724);
+}
+.dan-facevideo {
+ border-radius: 15px;
+  border: 3px dashed lightblue;
+>>>>>>> YH
   width: 50%;
   height: 250px;
   display: flex;
@@ -209,8 +316,16 @@ export default {
   background:rgba(135, 135, 135, 0.822);
 }
 
+<<<<<<< HEAD
 .dan-facevideo {
   width: 50%;
+=======
+
+.dan-video {
+ border-radius: 15px;
+  border: 3px dashed lightblue;
+  width: 52%;
+>>>>>>> YH
   height: 250px;
   display: flex;
   flex-direction: column;
@@ -380,7 +495,14 @@ h1.hero:after {
   position: relative;
 }
 
+<<<<<<< HEAD
 
+=======
+.col.four {
+  width: 23%;
+  margin: 0 10%;
+}
+>>>>>>> YH
 
 .col.three {
   width: 31.3%;
@@ -412,8 +534,12 @@ h1.hero:after {
 .col .feature {
   font-size: 21px;
   font-weight: 700;
+<<<<<<< HEAD
   color:rgb(255, 255, 255); 
   
+=======
+  font-family: 'Roboto Slab', sans-serif;
+>>>>>>> YH
 }
 
 .col .service:after {
@@ -636,8 +762,21 @@ h2 {
 
 
 /*업로드 버튼*/
+<<<<<<< HEAD
 
 body button {
+=======
+body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0;
+  left: 0;
+  top: 0;
+}
+body button {
+  display: block;
+>>>>>>> YH
   margin: 0 auto;
   position: relative;
   transform: translateY(-50%);
@@ -650,7 +789,11 @@ body button {
 body button p {
   color: #bfbfbf;
   font-family: "PT Sans", sans-serif;
+<<<<<<< HEAD
   font-size: 12px;
+=======
+  font-size: 17px;
+>>>>>>> YH
   letter-spacing: 4px;
   text-indent: 4px;
   margin: 0 auto;
@@ -663,7 +806,11 @@ body button:focus {
 }
 
 body button .loader {
+<<<<<<< HEAD
   stroke: #ffffff;
+=======
+  stroke: #3db0fa;
+>>>>>>> YH
   opacity: 0;
   stroke-DashArray: 232;
   transition: opacity 0s;
@@ -677,12 +824,20 @@ body button #shape, body button .arrow line, body button p {
 
 
 body button:hover #shape {
+<<<<<<< HEAD
   stroke: #ffffff;
+=======
+  stroke: #3db0fa;
+>>>>>>> YH
   transition: stroke 0.3s;
 }
 body button:hover p{
   letter-spacing: 6px;
+<<<<<<< HEAD
   color: #ffffff;
+=======
+  color: #3db0fa;
+>>>>>>> YH
   font-size: 19px;
   text-indent: 6px;
 }

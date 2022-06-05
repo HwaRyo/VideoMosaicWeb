@@ -10,10 +10,6 @@ const routes = [
         name: 'oauthHandler',
         component: () => import ('@/views/OauthHandler')
     }, {
-        path: '/profile',
-        name: 'profile',
-        component: () => import ('@/views/Profile')
-    }, {
         path: '/download',
         name: 'videoDownload',
         component: () => import ('@/views/VideoDownload')

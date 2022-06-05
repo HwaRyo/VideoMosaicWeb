@@ -1,30 +1,55 @@
 <template>
+<<<<<<< HEAD
 <table class="dllist">
   <colgroup>
     <col class="check">
+=======
+<div class="bdlist">
+<div class="AddWrap">
+    <button v-on:click="download()">다운로드</button>
+    <table class="tbAdd">
+  <colgroup>
+    <col class="number">
+>>>>>>> YH
     <col class="title">
     <col class="createDate">
     <col class="modifiedDate">
   </colgroup>
   <thead>
     <tr>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> YH
       <th>체크</th>
       <th>제목</th>
       <th>생성날짜(yyMMdd)</th>
       <th>생성시간(HHmmss)</th>
     </tr>
   </thead>
+<<<<<<< HEAD
   <tbody>
     <tr class="content" v-for="(v, i) in datas" :key="i">
       <td><input type="radio" name="chkVideo" v-model="picked" :value="v"></td>
+=======
+
+  
+  <tbody>
+    <tr class="content" v-for="(v, i) in datas" :key="i">
+      <input type="radio" name="chkVideo" v-model="picked" :value="v">
+>>>>>>> YH
       <td>모자이크 비디오{{i}}</td>
       <td>{{v.substring(0,6)}}</td>
       <td>{{v.substring(7,13)}}</td>
     </tr>
   </tbody>
 </table>
+<<<<<<< HEAD
 <div class="download">
     <button class="downloadbtn btn-1" v-on:click="download()"><span>Click!</span><span>다운로드</span></button>	
+=======
+</div>
+>>>>>>> YH
 </div>
 <div class="section bg">
         <div class="container">
@@ -137,6 +162,7 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
 /* 테이블 색상 (중요하지 않음) */
 .dllist {
   width: 80%;
@@ -272,12 +298,40 @@ background: linear-gradient(0deg, rgb(49, 49, 49) 0%, rgb(83, 83, 83) 100%);
   background: rgb(255, 255, 255)
   
 }
+=======
+h1 {
+    align-items: center;
+
+}
+.bdlist {
+    align-items: center;
+}
+.tbAdd{
+    border-top:1px solid #888;
+    width:1000px;
+
+}
+.tbAdd th, .tbAdd td{border-bottom:1px solid #eee; padding:5px 0; }
+.tbAdd td{padding:10px 10px; box-sizing:border-box; text-align:center;}
+.tbAdd td.txt_cont{height:300px; vertical-align:top;}
+.btnWrap{text-align:center; margin:20px 0 0 0;}
+.btnWrap a{margin:0 20px;}
+.btnAdd {background:#43b984}
+.btnDelete{background:#f00;}
+
+>>>>>>> YH
 /*
   Slider
 */
 
+<<<<<<< HEAD
 .section .slider {
   background: rgb(34, 40, 49);
+=======
+.section .slider,
+.section .footer {
+  background: rgb(117, 150, 241);
+>>>>>>> YH
 }
 
 .slidercontent {
@@ -286,6 +340,10 @@ background: linear-gradient(0deg, rgb(49, 49, 49) 0%, rgb(83, 83, 83) 100%);
 
 
 .hero {
+<<<<<<< HEAD
+=======
+  font-family: 'Roboto Slab', sans-serif;
+>>>>>>> YH
   color: white;
   font-weight: normal;
   letter-spacing: 1px;
@@ -340,7 +398,14 @@ h1.hero:after {
   position: relative;
 }
 
+<<<<<<< HEAD
 
+=======
+.col.four {
+  width: 23%;
+  margin: 0 1%;
+}
+>>>>>>> YH
 
 .col.three {
   width: 31.3%;
@@ -351,16 +416,22 @@ h1.hero:after {
   width: 40%;
   margin: 0 2.5%;
   padding: 0 2.5%;
+<<<<<<< HEAD
   background: rgb(221, 221, 221);
   border-radius: 10px;
   box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
 
+=======
+>>>>>>> YH
 }
 
 .col.extrapad {
   padding-top: 20px;
   padding-bottom: 20px;
+<<<<<<< HEAD
    color: rgba(255, 255, 255, 0.771);
+=======
+>>>>>>> YH
 }
 .col.five {
   width: 2424%;
@@ -371,16 +442,25 @@ h1.hero:after {
 .col .service,
 .col .feature {
   font-size: 21px;
+<<<<<<< HEAD
   font-weight: 700;
   color:#000; 
   
+=======
+  font-weight: 300;
+  font-family: 'Roboto Slab', sans-serif;
+>>>>>>> YH
 }
 
 .col .service:after {
   content: "";
   width: 50px;
   position: relative;
+<<<<<<< HEAD
   border-bottom: 1px solid rgb(0, 0, 0);
+=======
+  border-bottom: 1px solid #eee;
+>>>>>>> YH
   display: block;
   text-align: center;
   margin: auto;
@@ -396,7 +476,10 @@ h1.hero:after {
 .col span.side:first-of-type {
   margin-left: 50px;
   text-align: left;
+<<<<<<< HEAD
   color:#000;
+=======
+>>>>>>> YH
 }
 
 .col .icon {
@@ -413,14 +496,30 @@ h1.hero:after {
   position: absolute;
   padding: 0;
   margin: 0;
+<<<<<<< HEAD
   top: -11px;
+=======
+  top: -15px;
+>>>>>>> YH
   height: 50px;
   width: 50px;
 }
 
+<<<<<<< HEAD
 
 
 
+=======
+.col:hover > .icon {
+  background: #F44336;
+  color: white;
+}
+
+.col:hover > .icon.side {
+  background: initial;
+  color: initial;
+}
+>>>>>>> YH
 
 .responsivegroup {
   display: none;
@@ -431,7 +530,11 @@ h1.hero:after {
 
 .col p,
 .col h1 {
+<<<<<<< HEAD
   padding: 0 0%;
+=======
+  padding: 0 1%;
+>>>>>>> YH
   text-align: center;
 }
 
@@ -441,8 +544,12 @@ h1.hero:after {
 
 
 .col.bg {
+<<<<<<< HEAD
   background-image: rgb(221, 221, 221);
   border-radius: 10px;
+=======
+  background: rgb(231, 234, 255);
+>>>>>>> YH
 }
 
 .col.pointer {
@@ -450,8 +557,12 @@ h1.hero:after {
 }
 
 .col span.feature {
+<<<<<<< HEAD
   font-size: 25px;
   font-weight: 400;
+=======
+  font-size: 20px;
+>>>>>>> YH
 }
 /*
   Text
@@ -474,6 +585,10 @@ h1.hero:after {
 }
 
 h2 {
+<<<<<<< HEAD
+=======
+  font-family: 'Roboto Slab', sans-serif;
+>>>>>>> YH
   text-align: center;
   font-weight: 400;
   font-size: 18px;
@@ -503,7 +618,11 @@ h2 {
   color: #fff;
 }
 /*
+<<<<<<< HEAD
   Responsive
+=======
+  반응형
+>>>>>>> YH
 */
 
 .group:after {
@@ -511,6 +630,10 @@ h2 {
   display: table;
   clear: both;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> YH
 @media all and (max-width: 768px) {
   .container {
     width: 95%;

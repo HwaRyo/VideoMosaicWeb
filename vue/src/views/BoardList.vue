@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 <div class="section">
     <div class="slider">
       <div class="container slidercontent">
@@ -8,10 +9,14 @@
       </div>
     </div>     
   </div>
+=======
+<button v-on:click="insert()">등록</button>
+>>>>>>> YH
   <table>
   <colgroup>
     <col class="number">
     <col class="title">
+    <col class="writer">
     <col class="createDate">
     <col class="modifiedDate">
   </colgroup>
@@ -19,14 +24,16 @@
     <tr>
       <th>No</th>
       <th>제목</th>
+      <th>작성자</th>
       <th>생성날짜</th>
       <th>수정날짜</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="content" @click="move()" v-for="(v, i) in datas" :key="i">
+    <tr class="content" @click="move(v.id)" v-for="(v, i) in datas" :key="this.pageNum + i">
       <td>{{i+1}}</td>
       <td>{{v.title}}</td>
+      <td>관리자</td>
       <td>{{v.createdDate}}</td>
       <td>{{v.modifiedDate}}</td>
     </tr>
@@ -135,8 +142,11 @@ export default {
                 console.log('err',err);
             })
         },
-        move(){
-            location.href = "/BoardDetail";
+        move(x){
+         this.$router.push({
+            name: 'boarddetail',
+            params: { id: x }
+          })
         }
     },
     computed: {
@@ -201,6 +211,7 @@ tr:nth-of-type(odd) {
 /* 컬럼의 너비 */
 .number {width: 3%;}
 .title {width: 63%;}
+.writer {width: 10%;}
 .createdate {width: 5%;}
 .modifieddate {width: 5%;}
 

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 <table class="info">
   <colgroup>
     <col class="title">
@@ -35,6 +36,47 @@
     <button class="backbtn btn-2" @click="moveBoardList()">목록으로 돌아가기</button>	
 </div>
 
+=======
+<div>
+    <div class="bdlist">
+		<div class="AddWrap">
+			<form>
+				<table class="tbAdd">
+					<colgroup>
+						<col width="15%" />
+						<col width="*" />
+					</colgroup>
+                <thead>
+                    <tr>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>생성일</th>
+                        <th>수정일</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                        <td>{{datas.title}}</td>
+                        <td>관리자</td>
+                        <td>{{datas.createdDate}}</td>
+                        <td>{{datas.modifiedDate}}</td>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="4">내용</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <td colspan="4">{{datas.content}}</td>
+                </tbody>
+				</table>
+			</form>
+		</div>	
+        <div class="btnWrap">
+			<a href="/" class="btn">목록</a>
+		</div>	
+	</div>
+>>>>>>> YH
 
  <div class="section">
         <div class="container">
