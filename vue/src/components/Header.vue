@@ -5,8 +5,8 @@
   <input class="menu-btn" type="checkbox" id="menu-btn" />
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu">
-      <li v-if="this.$store.getters['token/getIsLogin']" class="headerItem"><a href="/BoardList">FAQ</a></li>
-      <li v-if="!this.$store.getters['token/getIsLogin']" class="headerItem"><a href="/Login">로그인</a></li>
+      <li v-if="this.$store.getters['token/getIsLogin']" class="headerItem"><a @click="moveBoardList()">FAQ</a></li>
+      <li v-if="!this.$store.getters['token/getIsLogin']" class="headerItem"><a @click="moveLogin()">로그인</a></li>
       <li v-else class="headerItem" @click="handleLogout()"><a class="">로그아웃</a></li>
   </ul>
 </header>
@@ -32,15 +32,12 @@ export default {
       },
       moveHome() {
       this.$router.push('/');
-      document.getElementsByClassName("detail-menu")[0].style.display = 'none';
     },
       moveLogin() {
       this.$router.push('/Login');
-      document.getElementsByClassName("detail-menu")[0].style.display = 'none';
     },
       moveBoardList() {
       this.$router.push('/BoardList');
-      document.getElementsByClassName("detail-menu")[0].style.display = 'none';
     },
 
   },
