@@ -1,5 +1,5 @@
 # [사생활 보호 침해를 방지하기 위한 모자이크 서비스](github.com/HwaRyo/VideoMosaicWeb)
-`Python`, `JAVA`,`Vue.js`
+`Python`, `JAVA`,`Spring Boot`, `Vue.js`, `MySQL`
 - 미디어 성장 시대에서 꼭 사용해야 하는 자동 모자이크 서비스
 🧑‍🤝‍🧑
 # 우리는...
